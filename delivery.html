@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="mail.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <title>Cities with Delivery - Leo´s Tamales - mexican tamales and champurrado</title>
+</head>
+<body>
+    <nav class="relative sticky top-0 px-4 py-4 flex justify-between items-center bg-white z-50">
+		<a class="text-3xl font-bold leading-none" href="#">
+			
+            <img class="h-10" src="multimedia/vectores/LOGO HORIZONTAL.svg" alt="">
+		</a>
+		<div class="lg:hidden">
+			<button class="navbar-burger flex items-center text-green-600 p-2">
+				<svg class="block h-6 w-6 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<title>Mobile menu</title>
+					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+				</svg>
+			</button>
+		</div>
+		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Start</a></li>
+			
+			<li><a class="text-sm text-blue-600 font-bold" href="#">Menu</a></li>
+			
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Prices</a></li>
+			
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Contact us</a></li>
+			
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Delivery</a></li>
+		</ul>
+		
+		<a class="hidden lg:flex lg:flex-row lg:gap-3 lg:align-center lg:justify-center lg:block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="tel:+13237877575">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+            Order Now
+        </a>
+	</nav>
+	<div class="navbar-menu relative z-50 hidden">
+		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+			<div class="flex items-center mb-8">
+				<a class="mr-auto text-3xl font-bold leading-none" href="#">
+					<img class="w-16 h-16" src="https://leostamales.com/multimedia/vectores/LOGO%20VERTICAL.svg" alt="">
+                    
+				</a>
+				<button class="navbar-close">
+					<svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+			<div>
+				<ul>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#Menu">Menu</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#Prices">Prices</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#Contact">Contact us</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#Delivery">Delivery</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mt-auto">
+				<div class="pt-6">
+					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
+					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="#">
+                        
+                        <svg class="inline w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" fill="#ffffff" width="48"><path d="M727-80q-47.5 0-80.75-33.346Q613-146.693 613-194.331q0-6.669 1.5-16.312T619-228L316-404q-15 17-37 27.5T234-366q-47.5 0-80.75-33.25T120-480q0-47.5 33.25-80.75T234-594q23 0 44 9t38 26l303-174q-3-7.071-4.5-15.911Q613-757.75 613-766q0-47.5 33.25-80.75T727-880q47.5 0 80.75 33.25T841-766q0 47.5-33.25 80.75T727-652q-23.354 0-44.677-7.5T646-684L343-516q2 8 3.5 18.5t1.5 17.741q0 7.242-1.5 15Q345-457 343-449l303 172q15-14 35-22.5t46-8.5q47.5 0 80.75 33.25T841-194q0 47.5-33.25 80.75T727-80Zm.035-632Q750-712 765.5-727.535q15.5-15.535 15.5-38.5T765.465-804.5q-15.535-15.5-38.5-15.5T688.5-804.465q-15.5 15.535-15.5 38.5t15.535 38.465q15.535 15.5 38.5 15.5Zm-493 286Q257-426 272.5-441.535q15.5-15.535 15.5-38.5T272.465-518.5q-15.535-15.5-38.5-15.5T195.5-518.465q-15.5 15.535-15.5 38.5t15.535 38.465q15.535 15.5 38.5 15.5Zm493 286Q750-140 765.5-155.535q15.5-15.535 15.5-38.5T765.465-232.5q-15.535-15.5-38.5-15.5T688.5-232.465q-15.5 15.535-15.5 38.5t15.535 38.465q15.535 15.5 38.5 15.5ZM727-766ZM234-480Zm493 286Z"/></svg>
+                        Share this website</a>
+				</div>
+				<p class="my-4 text-xs text-center text-gray-400">
+					<span>Copyright © 2023</span>
+				</p>
+			</div>
+		</nav>
+	</div>
+    <section class="bg-gray-100 py-8">
+        <div class="container mx-auto">
+            <div class="mx-auto max-w-screen-md text-center  lg:mb-12">
+                <h2 class="titulo amarillo mb-4 text-white mt-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl  dark:text-white text-center h-15 md:h-16 md:pt-2 leading-normal">Delivery</h2>
+                <p class="mb-5 font-light text-red-900 sm:text-xl dark:text-gray-400">Ciudades con servicio de delivery:</p>
+          <div class="grid grid-cols-2 mx-2 gap-1 md:grid-cols-3 lg:max-w-5xl lg:mx-auto lg:gap-2">
+            <!-- Aquí se mostrarán las ciudades -->
+            <div class="los-angeles flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold inset-x-0 bottom-0">Los Angeles</h3>
+            </div>
+            <div class="carson flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Carson</h3>
+            </div>
+            <div class=" compton flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Compton</h3>
+            </div>
+            <div class=" san-pedro flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">San Pedro</h3>
+            </div>
+            <div class="palos-verdes flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Palos Verdes</h3>
+            </div>
+            <div class="bellflower flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Bellflower</h3>
+            </div>
+            <div class="lomita flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Lomita</h3>
+            </div>
+            <div class="torrance flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Torrance</h3>
+            </div>
+            <div class="long-beach flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Long Beach</h3>
+            </div>
+            <div class="inglewood flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Inglewood</h3>
+            </div>
+            <div class="lawndale flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Lawndale</h3>
+            </div>
+            <div class="paramount flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Paramount</h3>
+            </div>
+            <div class="harbor-city flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Harbor City</h3>
+            </div>
+            <div class="lynwood flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Lynwood</h3>
+            </div>
+            <div class="wilmington flex justify-center items-end h-auto aspect-square pb-3">
+                <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Wilmington</h3>
+            </div>
+            
+           
+          </div>
+        </div>
+      </section>
+      <footer-leostamales></footer-leostamales>
+
+</body>
+<script>
+    // Burger menus
+    document.addEventListener('DOMContentLoaded', function() {
+        // open
+        const burger = document.querySelectorAll('.navbar-burger');
+        const menu = document.querySelectorAll('.navbar-menu');
+    
+        if (burger.length && menu.length) {
+            for (var i = 0; i < burger.length; i++) {
+                burger[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    
+        // close
+        const close = document.querySelectorAll('.navbar-close');
+        const backdrop = document.querySelectorAll('.navbar-backdrop');
+    
+        if (close.length) {
+            for (var i = 0; i < close.length; i++) {
+                close[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    
+        if (backdrop.length) {
+            for (var i = 0; i < backdrop.length; i++) {
+                backdrop[i].addEventListener('click', function() {
+                    for (var j = 0; j < menu.length; j++) {
+                        menu[j].classList.toggle('hidden');
+                    }
+                });
+            }
+        }
+    });
+    </script>
+</html>

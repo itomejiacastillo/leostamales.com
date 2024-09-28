@@ -1,0 +1,134 @@
+* {
+    scroll-behavior: smooth;
+}
+@font-face {
+    font-display: swap;
+}
+
+.titulo {
+
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+.verde  {
+    background-image: url(../multimedia/FONDOS/VERDE\ PEQUENO.svg);
+}
+.rojo {
+    background-image: url(../multimedia/FONDOS/ROJO\ PEQUENO.svg);
+}
+.amarillo {
+    background-image: url(../multimedia/FONDOS/AMARILLO\ GRANDE.svg);
+}
+/* .carson {
+    background-image: url(multimedia/carson.webp);
+    background-size: cover;
+}
+.los-angeles {
+    background-image: url(multimedia/los\ angeles.webp);
+    background-size: cover;
+}
+.compton {
+    background-image: url(multimedia/compton.webp);
+    background-size: cover;
+}
+
+.san-pedro {
+    background-image: url(multimedia/san\ pedro.webp);
+    background-size: cover;
+}
+
+.palos-verdes {
+    background-image: url(multimedia/palos\ verdes.webp);
+    background-size: cover;
+}
+
+.bellflower {
+    background-image: url(multimedia/bellflower.webp);
+    background-size: cover;
+}
+.lomita {
+    background-image: url(multimedia/lomita.webp);
+    background-size: cover;
+}
+
+.torrance {
+    background-image: url(multimedia/torrance.webp);
+    background-size: cover;
+    background-position: bottom;
+}
+.long-beach {
+    background-image: url(multimedia/long\ beach.webp);
+    background-size: cover;
+}
+
+.inglewood {
+    background-image: url(multimedia/inglewood.webp);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.lawndale {
+    background-image: url(multimedia/lawndale.webp);
+    background-size: cover;
+    background-position: bottom;
+}
+.paramount {
+    background-image: url(multimedia/paramount.webp);
+    background-size: cover;
+    
+}
+
+.harbor-city {
+    background-image: url(multimedia/harbor\ city.avif);
+    background-size: cover;
+
+}
+.lynwood {
+    background-image: url(multimedia/lynwood.webp);
+    background-size: cover;
+    background-position: center;
+}
+.wilmington {
+    background-image: url(multimedia/wilmington.webp);
+    background-size: cover;
+}
+ */
+
+.h-13 {
+    height: 55px;
+} 
+
+
+
+
+.lista {
+    animation: subir 25s infinite ease-in-out;
+    animation-delay: 1s;
+}
+@keyframes subir {
+    7.14% {margin-top: -72px;}
+    14.29% {margin-top: -144px;}
+    21.43% {margin-top: -216px;}
+    28.57% {margin-top: -288px;}
+    35.71% {margin-top: -360px;}
+    42.86% {margin-top: -432px;}
+    50.00% {margin-top: -504px;}
+    57.14% {margin-top: -576px;}
+    64.29% {margin-top: -648px;}
+    71.43% {margin-top: -720px;}
+    78.57% {margin-top: -792px;}
+    85.71% {margin-top: -864px;}
+    92.86% {margin-top: -936px;}
+    100% {margin-top: -1008px;}
+
+
+}
+
+
+.margen-auto {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+}

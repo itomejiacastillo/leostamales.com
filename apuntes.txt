@@ -1,0 +1,64 @@
+<!--             seccion delivery             -->
+<section class="bg-lime-50 py-8">
+    <div class="container mx-auto">
+        <div class="mx-auto max-w-screen-md text-center  lg:mb-12">
+            <h2 class="titulo amarillo mb-4 text-white mt-4 text-4xl font-extrabold tracking-tight md:text-5xl  dark:text-white text-center h-15 md:h-16 md:pt-2 leading-normal">Delivery</h2>
+            <p class="mb-5 font-light text-red-900 sm:text-xl dark:text-gray-400">Cities with delivery service (may include an additional cost for delivery)</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:max-w-5xl lg:mx-auto lg:gap-2 gap-1">
+        <!-- Aquí se mostrarán las ciudades -->
+        <div class="los-angeles flex justify-center items-end h-auto aspect-video pb-3">
+            <h3 class="text-md text-center text-white bg-black/40 w-full font-bold inset-x-0 bottom-0">Los Angeles</h3>
+        </div>
+        <div class="carson flex justify-center items-end h-auto aspect-video pb-3">
+            <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Carson</h3>
+        </div>
+        <div class=" compton flex justify-center items-end h-auto aspect-video pb-3">
+            <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Compton</h3>
+        </div>
+        <div class=" san-pedro flex justify-center items-end h-auto aspect-video pb-3">
+            <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">San Pedro</h3>
+        </div>
+        <div class="palos-verdes flex justify-center items-end h-auto aspect-video pb-3">
+            <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Palos Verdes</h3>
+        </div>
+        <div class="bellflower flex justify-center items-end h-auto aspect-video pb-3">
+            <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Bellflower</h3>
+        </div>
+        <div class="lomita flex justify-center items-end h-auto aspect-video pb-3">
+            <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Lomita</h3>
+        </div>
+        <div class="torrance flex justify-center items-end h-auto aspect-video pb-3">
+            <h3 class="text-md text-center text-white bg-black/40 w-full font-bold">Torrance</h3>
+        </div>
+        
+        <div class="flex justify-center items-center h-auto aspect-video bg-gray-200">
+            <a class="py-2 px-6 border rounded-lg bg-green-500 font-bold text-white" href="delivery.html">View all Cities</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="hide" class="fixed bottom-2 right-2  flex items-center border rounded-lg" >
+    <div class="flex items-center bg-red-700 h-11 rounded-l-lg px-4"><p class="text-white font-bold">Cambiar Idioma</p><img src="multimedia/mexico-icono-emoji.png" class="ml-2" width="40px" alt="icono español españa"  class="icon-idioma"></div>
+    <div class="flex items-center bg-white h-11 px-4 rounded-r-lg"><button onclick="hidediv()">✖</button></div>
+  </div>
+
+
+
+
+npx tailwindcss -i ./input.css -o ./output.css --watch
+
+
+
+<form class="space-y-8 p-4 w-full md:w-96" action="/pages/success.html" name="contact" method="POST" data-netlify-recaptcha="true" data-netlify="true">
+            <label>Or fill this form to send us a message directly from here:</label>
+        
+            <label for="correo" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+            <input type="email" id="email" name="correo" class="shadow-sm bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:placeholder-gray-400  dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@youremail.com" required>
+        
+        
+            <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Your message</label>
+            <textarea id="message" name="mensaje" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:placeholder-gray-400  dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Tell us what do you want to know..."></textarea>
+        
+            <div data-netlify-recaptcha="true"></div>
+        <button type="submit" value="contact" class="py-3  px-5 text-m font-medium text-center text-white rounded-lg bg-green-500  sm:w-fit hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-orange-900">Send message</button>
+        </form>
