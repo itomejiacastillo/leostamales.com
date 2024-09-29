@@ -72,7 +72,7 @@ class footer_spanish extends HTMLElement{
             <div>
                 <h4 class="text-xl font-bold">Legal</h4>
                 <ul>
-                    <li class="my-3 ml-1"><a href="/es/">Politica de Privacidad</a></li>
+                    <li class="my-3 ml-1"><a href="/es/politica-de-privacidad.html">Politica de Privacidad</a></li>
                     <li class="my-3 ml-1"><a href="/es/">Términos y Condiciones</a></li>
                     <li class="my-3 ml-1"><a href="/es/">Acerca de</a></li>
                 </ul>
