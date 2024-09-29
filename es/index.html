@@ -24,6 +24,8 @@
     <link rel="canonical" href="https://leostamales.com/"/>
     <link rel="author" href="mailto:emmanuelm.castillo@outlook.com">
     <script src="../mail.js"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+
     
 </head>
 <body class="bg-lime-50">
@@ -270,7 +272,7 @@
 
           <!-- Recaptcha de Netlify -->
           <div class="mb-4">
-              <div data-netlify-recaptcha="true"></div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAArBk-yDbm04Gnh3"></div>
           </div>
 
           <input type="submit" value="Enviar" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-700">
@@ -310,7 +312,7 @@
                     </ul>
                 </div>
         <div>
-            <iframe title="Los Angeles Country map" class="mx-auto w-80 my-2 md:w-96" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d278786.9781182114!2d-118.0841349396095!3d33.9309119611628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2shn!4v1693273082954!5m2!1ses!2shn"  height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!--<iframe title="Los Angeles Country map" class="mx-auto w-80 my-2 md:w-96" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d278786.9781182114!2d-118.0841349396095!3d33.9309119611628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2shn!4v1693273082954!5m2!1ses!2shn"  height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
             <ul  class=" text-lg flex flex-wrap justify-center gap-2 font-bold  leading-normal  border border-gray-950 p-3 rounded-xl mt-4  text-orange-950" id="myList">
                 
                 <li>Los Angeles</li>
@@ -341,7 +343,6 @@
   </div>
 
 <footer-spanish></footer-spanish>
-
 
 </body>
 

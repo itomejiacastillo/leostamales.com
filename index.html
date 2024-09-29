@@ -24,7 +24,7 @@
     <link rel="canonical" href="https://leostamales.com/"/>
     <link rel="author" href="mailto:emmanuelm.castillo@outlook.com">
     <script src="mail.js"></script>
-    
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
 </head>
 <body class="bg-lime-50">
     
@@ -38,7 +38,7 @@
         <div class="max-wy-sm p-4"><img title="Tamales Mexicanos" class="w-max  mx-auto my-5" src="../multimedia/tamal hero.webp" height="280px" alt="Tamales mexicanos en Los Angeles California"></div>
         <div class="mr-auto place-self-center ">
             <h1 class="max-w-2xl mb-4 text-white text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl dark:text-white">Taste the most delicious Mexican Tamales in Los Angeles.</h1>
-            <p class="max-w-2xl mb-6 font-normal text-gray-200 text-m lg:mb-8 md:text-lg lg:text-xl dark:text-gray-200">We have so many flavors and the best prices you to enjoy our delightful mexican tamales and champurrado.</p>
+            <p class="max-w-2xl mb-6 font-normal text-gray-200 text-m lg:mb-8 md:text-lg lg:text-xl dark:text-gray-200">We have so many flavors and the best prices you to enjoy our delightful mexican tamales and champurrado...</p>
             
             
             <a title="Ordenar ahora" href="tel:+13237877575"  class="lg:hidden bg-green-500 inline-flex items-center justify-center text-white px-5 py-3 text-base font-medium text-center border border-gray-300 rounded-lg hover:bg-orange-600 focus:ring-4 focus:ring-gray-100">
@@ -272,8 +272,7 @@
 
           <!-- Recaptcha de Netlify -->
           <div class="mb-4">
-            <div id="recaptcha-container"></div>
-              
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAArBk-yDbm04Gnh3"></div>
           </div>
 
           <input type="submit" value="Enviar" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-700">
@@ -341,7 +340,7 @@
     <div class="flex items-center bg-white h-11 px-4 rounded-r-lg"><button onclick="hidediv()">✖</button></div>
   </div>
   <footer-english></footer-english>
-  <script>
+  <!-- <script>
     // Función para cargar el reCAPTCHA de forma asincrónica
     function loadRecaptcha() {
       var recaptchaContainer = document.getElementById('recaptcha-container');
@@ -354,7 +353,7 @@
 
     // Llama a la función para cargar el reCAPTCHA después de que la página haya terminado de cargarse
     window.addEventListener('load', loadRecaptcha);
-  </script>
+  </script> -->
 </body>
 <head>
   

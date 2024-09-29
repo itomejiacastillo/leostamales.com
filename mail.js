@@ -306,11 +306,11 @@ window.customElements.define("nav-spanish", nav_spanish);
 
 
 
-window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+//window.dataLayer = window.dataLayer || [];
+ //      function gtag(){dataLayer.push(arguments);}
+      //  gtag('js', new Date());
     
-        gtag('config', 'G-TY0L285GKL');
+       // gtag('config', 'G-TY0L285GKL');
 
 
  // Burger menus
@@ -364,5 +364,19 @@ function hidediv() {
     }
 }
 
+window.onloadTurnstileCallback = function () {
+    turnstile.render("#example-container", {
+      sitekey: "0x4AAAAAAArBk-yDbm04Gnh3",
+      callback: function (token) {
+        console.log(`Challenge Success ${token}`);
+      },
+    });
+  };
 
-
+  function goBack() {
+    if (document.referrer) {
+        window.history.back();  // Vuelve a la página anterior
+    } else {
+        window.location.href = "/";  // Si no hay página anterior, redirige al inicio
+    }
+}
