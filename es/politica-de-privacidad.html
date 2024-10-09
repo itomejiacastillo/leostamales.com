@@ -18,11 +18,14 @@
     <meta property="og:image" content="../multimedia/queso.webp">
 
     <script src="../mail.js"></script>
+    <script src="../aos.js"></script>
+    
+    <link rel="stylesheet" href="../aos.css">
 </head>
 <body class="scroll-smooth">
     <nav-spanish></nav-spanish>
     <main class="p-2 sm:grid  sm:grid-cols-1 sm:gap-x-2 lg:max-w-5xl lg:mx-auto lg:gap-6 md:gap-4">
-        <div class="max-w-2xl mx-auto p-6 bg-white rounded-lg ">
+        <div data-aos="fade-left" class="max-w-2xl mx-auto p-6 bg-white rounded-lg ">
             <h1 class="text-2xl font-bold mb-4">Política de Privacidad</h1>
             <p class="text-gray-700 mb-2"><strong>Última actualización:</strong> 28 de septiembre del 2024.</p>
         
@@ -64,5 +67,8 @@
         
     </main>
     <footer-spanish></footer-spanish>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>

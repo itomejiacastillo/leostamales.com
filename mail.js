@@ -1,3 +1,5 @@
+
+
 class footer_english extends HTMLElement{
     constructor(){
         super();
@@ -5,7 +7,7 @@ class footer_english extends HTMLElement{
     connectedCallback() {
         this.innerHTML = `<footer class="py-8 bg-lime-50">
         <hr class="h-px lg:max-w-5xl lg:mx-auto  bg-green-700 mx-4 border-0 mb-7">
-        <img title="Leos Tamales logo" alt="Leos Tamales logo" class="w-64 mx-auto" src="multimedia/vectores/LOGO HORIZONTAL.svg" width="256px" alt="">
+        <img data-aos="zoom-in" data-aos-delay="200" data-aos-duration="500" title="Leos Tamales logo" alt="Leos Tamales logo" class="w-64 mx-auto" src="multimedia/vectores/LOGO HORIZONTAL.svg" width="256px" alt="">
         <div class="py-8 px-3 w-full md:max-w-screen-md md:m-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 lg:gap-10">
             <div>
                 <h4 class="text-xl font-bold">Contact</h4>
@@ -49,7 +51,7 @@ class footer_spanish extends HTMLElement{
     connectedCallback() {
         this.innerHTML = `<footer class="py-8 bg-lime-50">
         <hr class="h-px lg:max-w-5xl lg:mx-auto  bg-green-700 mx-4 border-0 mb-7">
-        <img title="Leos Tamales logo" alt="Leos Tamales logo" class="w-64 mx-auto" src="../multimedia/vectores/LOGO HORIZONTAL.svg" width="256px" alt="">
+        <img data-aos="zoom-in" data-aos-delay="200" data-aos-duration="500" title="Leos Tamales logo" alt="Leos Tamales logo" class="w-64 mx-auto" src="../multimedia/vectores/LOGO HORIZONTAL.svg" width="256px" alt="">
         <div class="py-8 px-3 w-full md:max-w-screen-md md:m-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 lg:gap-10">
             <div>
                 <h4 class="text-xl font-bold">Contacto</h4>
@@ -302,17 +304,6 @@ window.customElements.define("nav-spanish", nav_spanish);
 
 
 
-
-
-
-
-//window.dataLayer = window.dataLayer || [];
- //      function gtag(){dataLayer.push(arguments);}
-      //  gtag('js', new Date());
-    
-       // gtag('config', 'G-TY0L285GKL');
-
-
  // Burger menus
  document.addEventListener('DOMContentLoaded', function() {
     // open
@@ -364,14 +355,6 @@ function hidediv() {
     }
 }
 
-window.onloadTurnstileCallback = function () {
-    turnstile.render("#example-container", {
-      sitekey: "0x4AAAAAAArBk-yDbm04Gnh3",
-      callback: function (token) {
-        console.log(`Challenge Success ${token}`);
-      },
-    });
-  };
 
   function goBack() {
     if (document.referrer) {
