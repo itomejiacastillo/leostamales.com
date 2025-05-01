@@ -132,3 +132,69 @@
     margin-right: auto;
     max-width: 1000px;
 }
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+      }
+      2.5% {
+        transform: rotate(-5deg);
+      }
+      10% {
+        transform: rotate(5deg);
+      }
+      15% {
+        transform: rotate(-5deg);
+      }
+      20% {
+        transform: rotate(5deg);
+      }
+      25% {
+        transform: rotate(0deg);
+      }
+    
+      /* Reposo entre 25% y 75% */
+      75% {
+        transform: rotate(0deg);
+      }
+    
+      80% {
+        transform: rotate(-5deg);
+      }
+      85% {
+        transform: rotate(5deg);
+      }
+      90% {
+        transform: rotate(-5deg);
+      }
+      97.5% {
+        transform: rotate(5deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+  }
+  
+  .wiggle {
+    animation: wiggle 4s ease-in-out infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+        transform:  rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+  }
+  .rotation {
+    animation: rotation 240s linear infinite;
+  }
+
+  .text-stroke {
+    text-shadow: -0.5px -0.5px 0 #00c950, 0.5px -0.5px 0 #00c950, -0.5px 0.5px 0 #00c950, 0.5px 0.5px 0 #00c950;
+}
+
+.text-stroke-w {
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
