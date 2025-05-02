@@ -119,7 +119,7 @@ class nav_english extends HTMLElement{
                 <li><a class="text-m text-orange-900 hover:text-gray-500" href="/#Delivery">Delivery</a></li>
             </ul>
             
-            <a class="hidden lg:flex lg:flex-row lg:gap-3 lg:align-center lg:justify-center py-2 px-6 bg-green-500 hover:bg-green-600 text-m text-white font-bold rounded-xl transition duration-200" href="tel:+13237877575">
+            <a class="hidden lg:flex lg:flex-row lg:gap-3 lg:align-center lg:justify-center py-2 px-6 bg-yellow-400 hover:bg-yellow-500 text-m text-orange-900 font-bold rounded-xl transition duration-200" href="tel:+13237877575">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
                 Order Now
             </a>
@@ -224,7 +224,7 @@ class nav_spanish extends HTMLElement{
                 <li><a class="text-m text-orange-900 hover:text-gray-500" href="/es/#Delivery">Delivery</a></li>
             </ul>
             
-            <a class="hidden lg:flex lg:flex-row lg:gap-3 lg:align-center lg:justify-center py-2 px-6 bg-green-500 hover:bg-green-600 text-m text-white font-bold rounded-xl transition duration-200" href="tel:+13237877575">
+            <a class="hidden lg:flex lg:flex-row lg:gap-3 lg:align-center lg:justify-center py-2 px-6 bg-yellow-400 hover:bg-yellow-500 text-m text-orange-900 font-bold rounded-xl transition duration-200" href="tel:+13237877575">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
                 Ordenar ahora
             </a>
