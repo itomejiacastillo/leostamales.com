@@ -10,7 +10,7 @@ class footer_english extends HTMLElement{
         <img data-aos="zoom-in" data-aos-delay="200" data-aos-duration="500" title="Leos Tamales logo" alt="Leos Tamales logo" class="w-64 mx-auto" src="multimedia/vectores/LOGO HORIZONTAL.svg" width="256px" alt="">
         <div class="py-8 px-3 w-full md:max-w-screen-md md:m-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 lg:gap-10">
             <div>
-                <h4 class="text-xl font-bold">Contact</h4>
+                <h3 class="text-xl font-bold">Contact</h3>
                 <ul class="mb-7">
                     <li class="my-3"><a title="Instagram @leostamales22" class="py-2 text-md" href="https://www.instagram.com/leostamales22"><img title="Instagram logo" alt="Instagram logo" class="w-6 h-6 mx-2 inline-flex" src="../multimedia/vectores/instagram.svg" alt="">Instagram</a></li>
                     <li class="my-3"><a title="Facebook @leostamales" class="py-2 text-md" href="https://www.facebook.com/leostamales"><img title="Facebook logo" alt="Facebook logo" class="w-6 h-6 mx-2 inline-flex" src="../multimedia/vectores/facebook.svg" alt="">Facebook</a></li>
@@ -19,7 +19,7 @@ class footer_english extends HTMLElement{
                 </ul>
             </div>
             <div>
-                <h4 class="text-xl font-bold">Payments</h4>
+                <h3 class="text-xl font-bold">Payments</h3>
                 <ul class="mb-7">
                     <li class="my-3"><img title="Cash icon" alt="Cash icon" class="w-6 h-6 mx-2 inline-flex" src="../multimedia/vectores/efectivo.svg" alt="">Cash</li>
                     <li class="my-3"><a title="Pay with zelle" class="py-2 text-md" href="tel:+13237877575"><img title="Zelle logo" alt="Zelle icon" class="w-6 h-6 mx-2 inline-flex" src="../multimedia/vectores/zelle.svg" alt="">Zelle</a></li>
@@ -28,7 +28,7 @@ class footer_english extends HTMLElement{
                 </ul>
             </div>
             <div>
-                <h4 class="text-xl font-bold">Legal</h4>
+                <h3 class="text-xl font-bold">Legal</h3>
                 <ul>
                     <li class="my-3 ml-1"><a href="/">Privacy Policy</a></li>
                     <li class="my-3 ml-1"><a href="/">Terms & Conditions</a></li>
@@ -54,7 +54,7 @@ class footer_spanish extends HTMLElement{
         <img data-aos="zoom-in" data-aos-delay="200" data-aos-duration="500" title="Leos Tamales logo" alt="Leos Tamales logo" class="w-64 mx-auto" src="../multimedia/vectores/LOGO HORIZONTAL.svg" width="256px" alt="">
         <div class="py-8 px-3 w-full md:max-w-screen-md md:m-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 lg:gap-10">
             <div>
-                <h4 class="text-xl font-bold">Contacto</h4>
+                <h3 class="text-xl font-bold">Contacto</h3>
                 <ul class="mb-7">
                     <li class="my-3"><a title="Instagram @leostamales22" class="py-2 text-md" href="https://www.instagram.com/leostamales22"><img title="Instagram logo" alt="Instagram logo" class="w-6 h-6 mx-2 inline-flex" src="../multimedia/vectores/instagram.svg" alt="">Instagram</a></li>
                     <li class="my-3"><a title="Facebook @leostamales" class="py-2 text-md" href="https://www.facebook.com/leostamales"><img title="Facebook logo" alt="Facebook logo" class="w-6 h-6 mx-2 inline-flex" src="../multimedia/vectores/facebook.svg" alt="">Facebook</a></li>
@@ -63,7 +63,7 @@ class footer_spanish extends HTMLElement{
                 </ul>
             </div>
             <div>
-                <h4 class="text-xl font-bold">Medios de Pago</h4>
+                <h3 class="text-xl font-bold">Medios de Pago</h3>
                 <ul class="mb-7">
                     <li class="my-3"><img title="Cash icon" alt="Cash icon" class="w-6 h-6 mx-2 inline-flex" src="../multimedia/vectores/efectivo.svg" alt="">Efectivo</li>
                     <li class="my-3"><a title="Pay with zelle" class="py-2 text-md" href="tel:+13237877575"><img title="Zelle logo" alt="Zelle icon" class="w-6 h-6 mx-2 inline-flex" src="../multimedia/vectores/zelle.svg" alt="">Zelle</a></li>
@@ -72,7 +72,7 @@ class footer_spanish extends HTMLElement{
                 </ul>
             </div>
             <div>
-                <h4 class="text-xl font-bold">Legal</h4>
+                <h3 class="text-xl font-bold">Legal</h3>
                 <ul>
                     <li class="my-3 ml-1"><a href="/es/politica-de-privacidad.html">Politica de Privacidad</a></li>
                     <li class="my-3 ml-1"><a href="/es/">Términos y Condiciones</a></li>

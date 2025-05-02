@@ -16,15 +16,19 @@
     <meta property="og:title" content="Tamales Mexicanos &amp; Champurrado - Leo's Tamales">
     <meta property="og:description" content="Vendemos los tamales mexicanos mas deliciosos del condado de Los Angeles. También vendemos champurrado. Haz tus órdenes ahora mismo.">
     <meta property="og:image" content="../multimedia/thumbnail.jpg">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="es">
     <link rel="icon" type="image/svg+xml" href="../multimedia/vectores/FAVICON.svg"/>
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="../main.css">
     <link rel="stylesheet" href="../aos.css">
     <link rel="icon" type="image/svg+xml" href="../multimedia/vectores/FAVICON.svg">
     <link rel="image_src" href="../multimedia/thumbnail.jpg">
-    <link rel="canonical" href="https://leostamales.com/"/>
+    <link rel="canonical" href="https://leostamales.com/es"/>
     <link rel="author" href="mailto:emmanuelm.castillo@outlook.com">
-    <link rel="alternate" hreflang="x-default" href="/">
+    <link rel="alternate" hreflang="en" href="https://leostamales.com/" />
+    <link rel="alternate" hreflang="es" href="https://leostamales.com/es/" />
+    <link rel="alternate" hreflang="x-default" href="https://leostamales.com/" />
     <script src="../mail.js"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
     <script src="../aos.js"></script>
@@ -46,7 +50,7 @@
                 <p class="max-w-2xl mb-6 font-normal text-gray-200 text-lg lg:mb-8 md:text-lg lg:text-xl dark:text-gray-200">Tenemos muchos sabores y los mejores precios para que puedas disfrutar nuestros deliciosos tamales mexicanos y champurrado.</p>
                 
                 
-                <a title="Ordenar ahora" href="tel:+13237877575"  class="lg:hidden bg-green-500 inline-flex items-center justify-center text-white px-5 py-3 text-base font-medium text-center border border-gray-300 rounded-lg hover:bg-yellow-500 focus:ring-4 focus:ring-gray-100">
+                <a title="Ordenar ahora" href="tel:+13237877575"  class="lg:hidden bg-yellow-400 inline-flex items-center justify-center text-orange-900 px-5 py-3 text-lg font-bold text-center border rounded-lg hover:bg-yellow-500 focus:ring-4 focus:ring-orange-900">
                     <svg class="w-6 h-6 mx-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>Ordenar ahora
                     
                 </a> <span id="Menu"></span>
@@ -187,7 +191,7 @@
       <div class="w-full text-left">
         <div onclick="togglePrices()" class="flex items-center justify-between cursor-pointer group border-t border-t-gray-500 border-b border-b-gray-500 py-2">
             <span class=" text-gray-500">Ver todos los precios</span>
-            <button class="transition-transform duration-300" id="arrowBtn">
+            <button name="Mostrar todos los precios" class="transition-transform duration-300" id="arrowBtn">
               <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-300"
                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
                    xmlns="http://www.w3.org/2000/svg">
@@ -396,11 +400,21 @@
       
     </div>
 
-<div data-aos="fade-left" data-aos-delay="5000" data-aos-duration="700" id="hide" class="flex items-center border rounded-lg" >
 
-    <a title="Cambiar Idioma" href="/" class="flex items-center bg-red-700 h-11 rounded-l-lg px-4"><p class="text-white font-bold">Change Language</p><img title="mexico emoji flag" src="../multimedia/usa icon.png" class="ml-2" width="40px" alt="mexico flag emoji"  class="icon-idioma"></a>
-    <div class="flex items-center bg-white h-11 px-4 rounded-r-lg"><button onclick="hidediv()">✖</button></div>
-  </div>
+    <div data-aos="fade-left" data-aos-delay="5000" data-aos-duration="700" id="hide"
+    class="flex items-center border px-2 py-1.5 gap-1.5 border-gray-300 rounded-lg shadow-sm bg-white/80 backdrop-blur-sm text-sm">
+    <span class="font-medium">Translate to english</span>
+
+ <a title="Change language" href="/"
+    >
+   <button class="inline px-2 py-1 w-12 bg-gray-200 border border-gray-400 text-black font-medium rounded-sm ">Yes</button>
+ </a>
+ <button onclick="hidediv()" class="hover:text-gray-600 w-12 transition-colors inline px-2 py-1 bg-white border border-gray-400 text-black font-medium rounded-sm ">No</button>
+
+
+</div>
+
+
 </div>
 
 <footer-spanish></footer-spanish>
@@ -425,6 +439,25 @@
   arrow.classList.toggle('rotate-180');
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const userLang = (navigator.language || navigator.userLanguage).slice(0, 2);
+    const path = window.location.pathname;
+
+    const isSpanishBrowser = userLang === "es";
+    const isEnglishBrowser = userLang === "en";
+
+    const isOnSpanishPage = path.startsWith("/es");
+    const isOnEnglishPage = !isOnSpanishPage; // cualquier cosa que no sea "/es"
+
+    const shouldShowSwitch =
+      (isSpanishBrowser && isOnEnglishPage) ||
+      (isEnglishBrowser && isOnSpanishPage);
+
+    const switchDiv = document.getElementById("hide");
+    if (switchDiv) {
+      switchDiv.style.display = shouldShowSwitch ? "flex" : "none";
+    }
+  });
 </script>
 </body>
 
