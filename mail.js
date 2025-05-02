@@ -36,7 +36,7 @@ class footer_english extends HTMLElement{
                 </ul>
             </div>
         </div>
-        <p class="text-center">© 2023 Leo's Tamales. All Rights Reserved.</p>
+        <p class="text-center">© 2025 Leo's Tamales. All Rights Reserved.</p>
         
       </footer>`
     }
@@ -80,7 +80,7 @@ class footer_spanish extends HTMLElement{
                 </ul>
             </div>
         </div>
-        <p class="text-center">© 2023 Leo's Tamales. Todos los derechos reservados.</p>
+        <p class="text-center">© 2025 Leo's Tamales. Todos los derechos reservados.</p>
         
       </footer>`
     }
