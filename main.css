@@ -661,12 +661,13 @@ nav-spanish {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(180deg, var(--hero-from), var(--hero-to));
+  background:
+    radial-gradient(circle at 50% 24%, rgba(57, 181, 74, 0.36) 0%, transparent 55%),
+    linear-gradient(180deg, var(--hero-from), var(--hero-to));
   color: #fff;
-  min-height: calc(100dvh - 60px);
   display: flex;
-  align-items: flex-start;
-  padding: 6px 0 16px;
+  align-items: center;
+  padding: 14px 0 28px;
 }
 
 .hero__grid {
@@ -727,9 +728,12 @@ nav-spanish {
     min-height: 68px;
   }
   .hero {
-    min-height: min(620px, calc(100dvh - 68px));
+    background:
+      radial-gradient(circle at 28% 50%, rgba(57, 181, 74, 0.36) 0%, transparent 48%),
+      linear-gradient(180deg, var(--hero-from), var(--hero-to));
+    min-height: min(560px, calc(100dvh - 68px));
     align-items: center;
-    padding: 24px 0 40px;
+    padding: 24px 0 36px;
   }
   .hero__grid {
     grid-template-columns: 0.9fr 1.1fr;

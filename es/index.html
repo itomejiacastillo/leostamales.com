@@ -45,7 +45,7 @@
     .lang-switch a{color:var(--ink)}.lang-switch__active{background:var(--brown);color:var(--cream)}
     .site-header__cta{display:none}
     .nav-burger{display:inline-flex;align-items:center;justify-content:center;width:var(--tap);height:var(--tap);background:transparent;color:var(--ink);border:2px solid var(--brown);border-radius:10px;cursor:pointer}
-    .hero{background:linear-gradient(180deg,var(--hero-from),var(--hero-to));color:#fff;min-height:calc(100dvh - 60px);display:flex;align-items:flex-start;padding:6px 0 16px}
+    .hero{background:radial-gradient(circle at 50% 24%,rgba(57,181,74,.36) 0%,transparent 55%),linear-gradient(180deg,var(--hero-from),var(--hero-to));color:#fff;display:flex;align-items:center;padding:14px 0 28px}
     .hero__grid{display:grid;grid-template-columns:1fr;gap:8px;align-items:center}
     .hero__media{display:flex;justify-content:center}
     .hero__img{width:clamp(210px,34dvh,270px);height:auto;aspect-ratio:1/1;object-fit:contain}
@@ -59,7 +59,7 @@
     .hero__payments{margin:12px 0 0;display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--cream)}
     .float-pill{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;display:inline-flex;align-items:center;gap:8px;height:var(--tap);padding:0 18px;border-radius:var(--radius-pill);box-shadow:0 4px 12px rgba(58,31,24,.3);font-family:var(--font-body);font-weight:800;font-size:16px;text-decoration:none}
     .float-pill--order{right:16px;background:var(--green);color:#fff;border:2px solid #fff}
-    @media(min-width:768px){nav-english,nav-spanish{min-height:70px}.site-header__inner{min-height:68px}.hero{min-height:min(620px,calc(100dvh - 68px));align-items:center;padding:24px 0 40px}.hero__grid{grid-template-columns:.9fr 1.1fr;gap:36px}.hero__img{width:min(360px,100%)}.hero__value{margin:14px 0 22px}.hero__actions .btn{flex:0 0 auto;padding:10px 20px;font-size:17px}.hero__payments{margin-top:18px;font-size:15px}}
+    @media(min-width:768px){nav-english,nav-spanish{min-height:70px}.site-header__inner{min-height:68px}.hero{background:radial-gradient(circle at 28% 50%,rgba(57,181,74,.36) 0%,transparent 48%),linear-gradient(180deg,var(--hero-from),var(--hero-to));min-height:min(560px,calc(100dvh - 68px));align-items:center;padding:24px 0 36px}.hero__grid{grid-template-columns:.9fr 1.1fr;gap:36px}.hero__img{width:min(360px,100%)}.hero__value{margin:14px 0 22px}.hero__actions .btn{flex:0 0 auto;padding:10px 20px;font-size:17px}.hero__payments{margin-top:18px;font-size:15px}}
     @media(min-width:900px){.site-nav,.site-header__cta{display:inline-flex}.nav-burger{display:none}}
   </style>
   <link rel="stylesheet" href="/main.css" media="print" onload="this.media='all'">
@@ -145,6 +145,7 @@
         </div>
       </div>
     </section>
+    <hr class="zigzag">
     <span id="menu"></span>
     <span id="Menu"></span>
 
