@@ -202,7 +202,7 @@
         infoHeading: "Explore",
         phoneLabel: "+1 323 787 7575",
         cashLabel: "Cash",
-        privacyHref: "/es/politica-de-privacidad.html",
+        privacyHref: "/privacy-policy.html",
         privacyLabel: "Privacy Policy",
         rights: "All Rights Reserved.",
         waText: "Hi Leo's Tamales! I would like to place an order.",
