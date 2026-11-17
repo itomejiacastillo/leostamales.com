@@ -375,6 +375,53 @@ textarea.field {
   border: 2px solid #fff;
 }
 
+.lang-suggest {
+  position: fixed;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  left: 16px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100vw - 180px);
+  min-height: var(--tap);
+  padding: 6px 10px 6px 14px;
+  background: var(--card);
+  color: var(--ink);
+  border: 2px solid var(--brown);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 12px rgba(58, 31, 24, 0.3);
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.lang-suggest__link {
+  color: var(--red);
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.lang-suggest__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lang-suggest__close:hover {
+  background: var(--cream);
+  color: var(--ink);
+}
+
 /* Responsive Grids */
 .menu-grid {
   display: grid;

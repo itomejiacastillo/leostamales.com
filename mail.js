@@ -263,6 +263,16 @@
       return;
     }
 
+    const dismissSuggest = e.target.closest("[data-lang-dismiss]");
+    if (dismissSuggest) {
+      try {
+        localStorage.setItem("leo_lang_dismissed", "1");
+      } catch (_) {}
+      const box = dismissSuggest.closest(".lang-suggest");
+      if (box) box.remove();
+      return;
+    }
+
     const tracked = e.target.closest("[data-track]");
     if (tracked) {
       trackEvent(tracked.getAttribute("data-track"));
@@ -294,5 +304,40 @@
         waBtn.href = `https://wa.me/13237877575?text=${encodeURIComponent(lines.filter(Boolean).join("\n"))}`;
       }
     }
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const pageLang = (document.documentElement.lang || "en").slice(0, 2).toLowerCase();
+    const rawLang = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+    const deviceLang = rawLang.slice(0, 2).toLowerCase();
+
+    let savedLang = null;
+    let dismissed = false;
+    try {
+      savedLang = localStorage.getItem("leo_lang");
+      dismissed = localStorage.getItem("leo_lang_dismissed") === "1";
+    } catch (_) {}
+
+    if (dismissed || savedLang === pageLang) return;
+
+    const shouldSuggestEs = pageLang === "en" && deviceLang === "es";
+    const shouldSuggestEn = pageLang === "es" && deviceLang === "en";
+    if (!shouldSuggestEs && !shouldSuggestEn) return;
+
+    const targetLang = shouldSuggestEs ? "es" : "en";
+    const navEl = document.querySelector("nav-english, nav-spanish");
+    const altFromNav = navEl && navEl.getAttribute("alt-href");
+    const altLink = document.querySelector(`link[rel="alternate"][hreflang="${targetLang}"]`);
+    const targetHref = altFromNav || (altLink && new URL(altLink.href).pathname) || (targetLang === "es" ? "/es/" : "/");
+
+    const banner = document.createElement("div");
+    banner.className = "lang-suggest";
+    banner.setAttribute("role", "region");
+    banner.setAttribute("aria-label", shouldSuggestEs ? "Sugerencia de idioma" : "Language suggestion");
+    banner.innerHTML = shouldSuggestEs
+      ? `<span>¿Ver en español?</span> <a class="lang-suggest__link" href="${targetHref}" hreflang="es" lang="es" data-lang-switch="es">Cambiar</a> <button type="button" class="lang-suggest__close" aria-label="Cerrar" data-lang-dismiss>×</button>`
+      : `<span>Prefer English?</span> <a class="lang-suggest__link" href="${targetHref}" hreflang="en" lang="en" data-lang-switch="en">Switch</a> <button type="button" class="lang-suggest__close" aria-label="Dismiss" data-lang-dismiss>×</button>`;
+
+    document.body.appendChild(banner);
   });
 })();
