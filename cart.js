@@ -188,7 +188,17 @@
   function updateQty(id, delta) {
     if (!CATALOG[id]) return;
     const next = Math.max(0, (cart[id] || 0) + delta);
-    if (next === 0) {
+    if (id.endsWith("-each") && next >= 12) {
+      const dozenId = id.replace(/-each$/, "-dozen");
+      const extraDozens = Math.floor(next / 12);
+      const rem = next % 12;
+      cart[dozenId] = (cart[dozenId] || 0) + extraDozens;
+      if (rem === 0) {
+        delete cart[id];
+      } else {
+        cart[id] = rem;
+      }
+    } else if (next === 0) {
       delete cart[id];
     } else {
       cart[id] = next;
