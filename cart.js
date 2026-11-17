@@ -69,7 +69,42 @@
   let cart = loadCart();
   let step = "cart"; // "cart" | "checkout" | "confirm" | "sent"
   let sendChannel = "whatsapp"; // "whatsapp" | "email"
-  let customerInfo = { name: "", city: "", date: "", phone: "", email: "" };
+  let customerInfo = { name: "", city: "", date: "", phone: "", email: "", botField: "" };
+  let cartTurnstileWidgetId = null;
+
+  function ensureTurnstileScript(cb) {
+    if (window.turnstile) {
+      cb();
+      return;
+    }
+    let script = document.querySelector('script[src*="challenges.cloudflare.com/turnstile"]');
+    if (!script) {
+      script = document.createElement("script");
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+    const timer = setInterval(function () {
+      if (window.turnstile) {
+        clearInterval(timer);
+        cb();
+      }
+    }, 100);
+    setTimeout(function () { clearInterval(timer); }, 10000);
+  }
+
+  function renderCartTurnstile() {
+    const el = document.getElementById("cart-turnstile");
+    if (!el) return;
+    ensureTurnstileScript(function () {
+      if (!document.getElementById("cart-turnstile")) return;
+      el.innerHTML = "";
+      cartTurnstileWidgetId = window.turnstile.render(el, {
+        sitekey: "0x4AAAAAAArBk-yDbm04Gnh3"
+      });
+    });
+  }
 
   function getEntries() {
     return Object.keys(CATALOG)
@@ -230,6 +265,9 @@
                 <input class="field" id="checkout-email" type="email" autocomplete="email" value="${esc(customerInfo.email)}" placeholder="tu@correo.com">
               </div>
             </div>
+            <div style="position:absolute;left:-9999px" aria-hidden="true">
+              <input id="checkout-bot" type="text" tabindex="-1" autocomplete="off">
+            </div>
             <p id="checkout-error" class="form-note" style="color:var(--red);font-weight:800" hidden></p>
             <button type="button" class="btn btn--call" data-checkout-wa>
               ${es ? "Enviar por WhatsApp" : "Send via WhatsApp"}
@@ -274,12 +312,14 @@
               <span>${es ? "Subtotal estimado" : "Estimated subtotal"}</span>
               <strong>${money(totalPrice)}</strong>
             </div>
+            ${sendChannel === "email" ? '<div id="cart-turnstile" style="min-height:65px"></div>' : ""}
             <p id="confirm-error" class="form-note" style="color:var(--red);font-weight:800" hidden></p>
             <button type="button" class="${confirmClass}" data-confirm-send>
               ${confirmLabel}
             </button>
           </div>
         </div>`;
+      if (sendChannel === "email") renderCartTurnstile();
       return;
     }
 
@@ -353,9 +393,10 @@
     const date = ((document.getElementById("checkout-date") || {}).value || "").trim();
     const phone = ((document.getElementById("checkout-phone") || {}).value || "").trim();
     const email = ((document.getElementById("checkout-email") || {}).value || "").trim();
+    const botField = ((document.getElementById("checkout-bot") || {}).value || "").trim();
     const err = document.getElementById("checkout-error");
 
-    customerInfo = { name: name, city: city, date: date, phone: phone, email: email };
+    customerInfo = { name: name, city: city, date: date, phone: phone, email: email, botField: botField };
 
     if (!name || !city || !date) {
       if (err) {
@@ -470,24 +511,41 @@
         return;
       }
 
-      const formName = es ? "FormularioEspañol" : "FormularioIngles";
+      const turnstileToken = (window.turnstile && cartTurnstileWidgetId !== null)
+        ? window.turnstile.getResponse(cartTurnstileWidgetId)
+        : "";
+
+      if (!turnstileToken) {
+        const err = document.getElementById("confirm-error");
+        if (err) {
+          err.textContent = es
+            ? "Completa la verificación de seguridad antes de enviar."
+            : "Please complete the security check before sending.";
+          err.hidden = false;
+        }
+        return;
+      }
+
       const mensaje = (es ? "Ciudad: " : "City: ") + customerInfo.city + "\n\n" + buildItemsText(entries, es);
-      const body = new URLSearchParams({
-        "form-name": formName,
+      const payload = {
         name: customerInfo.name,
-        phone: customerInfo.phone || "-",
+        phone: customerInfo.phone || "",
         email: customerInfo.email,
+        city: customerInfo.city,
+        delivery_date: customerInfo.date,
         mensaje: mensaje,
-        delivery_date: customerInfo.date
-      }).toString();
+        lang: es ? "es" : "en",
+        botField: customerInfo.botField || "",
+        turnstileToken: turnstileToken
+      };
 
       sendBtn.disabled = true;
       sendBtn.textContent = es ? "Enviando..." : "Sending...";
 
-      fetch("/", {
+      fetch("/.netlify/functions/send-order", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
       })
         .then(function (res) {
           if (!res.ok) throw new Error("HTTP " + res.status);
@@ -499,6 +557,9 @@
         .catch(function () {
           sendBtn.disabled = false;
           sendBtn.textContent = es ? "Confirmar y enviar pedido" : "Confirm & send order";
+          if (window.turnstile && cartTurnstileWidgetId !== null) {
+            window.turnstile.reset(cartTurnstileWidgetId);
+          }
           const err = document.getElementById("confirm-error");
           if (err) {
             err.textContent = es

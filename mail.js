@@ -374,4 +374,71 @@
     const form = turnstileEl.closest("form");
     if (form) form.addEventListener("focusin", loadTurnstile, { once: true });
   });
+
+  document.addEventListener("submit", function (e) {
+    const form = e.target.closest("form[netlify]");
+    if (!form) return;
+    e.preventDefault();
+
+    const isEs = (document.documentElement.lang || "en").slice(0, 2).toLowerCase() === "es";
+    const fd = new FormData(form);
+    const token = String(fd.get("cf-turnstile-response") || "").trim();
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    let errEl = form.querySelector("[data-form-error]");
+    if (!errEl) {
+      errEl = document.createElement("p");
+      errEl.setAttribute("data-form-error", "1");
+      errEl.className = "form-note";
+      errEl.style.color = "var(--red)";
+      errEl.style.fontWeight = "800";
+      errEl.hidden = true;
+      if (submitBtn) form.insertBefore(errEl, submitBtn);
+    }
+
+    if (!token) {
+      errEl.textContent = isEs
+        ? "Completa la verificación de seguridad antes de enviar."
+        : "Please complete the security check before sending.";
+      errEl.hidden = false;
+      return;
+    }
+
+    errEl.hidden = true;
+    const origText = submitBtn ? submitBtn.textContent : "";
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = isEs ? "Enviando..." : "Sending...";
+    }
+
+    fetch("/.netlify/functions/send-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: fd.get("name") || "",
+        phone: fd.get("phone") || "",
+        email: fd.get("email") || "",
+        delivery_date: fd.get("delivery_date") || "",
+        mensaje: fd.get("mensaje") || "",
+        botField: fd.get("bot-field") || "",
+        lang: isEs ? "es" : "en",
+        turnstileToken: token
+      })
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        window.location.href = form.getAttribute("action") || (isEs ? "/es/success.html" : "/success.html");
+      })
+      .catch(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = origText;
+        }
+        if (window.turnstile) window.turnstile.reset();
+        errEl.textContent = isEs
+          ? "No se pudo enviar tu pedido. Intenta de nuevo o escríbenos por WhatsApp."
+          : "Could not send your order right now. Please try again or message us on WhatsApp.";
+        errEl.hidden = false;
+      });
+  });
 })();
