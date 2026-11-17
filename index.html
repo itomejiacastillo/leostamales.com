@@ -243,107 +243,138 @@
 
 
 
-  <!--                     SECCION CONTACTO                     -->
-<section data-aos="fade-up" data-aos-delay="300" class="py-4 bg-lime-50 flex flex-col items-center max-w-[100vw]">
-  <div  class="mx-auto max-w-screen-md text-center  lg:mb-5">
-    <div class="mx-auto my-8 rojo flex items-center justify-center px-8 h-16 md:h-20 max-w-sm bg-no-repeat bg-center">
-      <h2 class=" text-white text-4xl font-extrabold md:text-5xl  dark:text-white text-center leading-">Contact us</h2>
-    </div>
-    
-    <p class="px-2 mb-2 text-xl text-start font-light text-red-900 sm:text-xl dark:text-gray-500">Want to place an order? Just give us a quick call or send us an email!
+    <!-- CONTACT & PRE-ORDER FORM -->
+    <section class="section" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="contact-heading" class="ribbon">Contact us</h2>
+        </div>
+        <p class="section-lead">Ready to order or pre-order? Message us on WhatsApp, call us, or send your order details below.</p>
 
-    </p>
-  </div>      
-      <!-- contenedor contacto y formulario-->
-  <div class="flex flex-col pb-14 md:flex-row md:gap-20 md:justify-between lg:gap-20  md:w-fit md:items-center md:my-5">
+        <div class="contact-grid">
+          <div class="contact-list" id="regresar">
+            <h3 class="contact-subhead">Call or message</h3>
 
-        <!-- contenedor contactos -->
-        <div data-aos="zoom-in" data-aos-delay="400" class="flex items-center gap-6 flex-col my-5 mb-16 lg:mb-0">
-          <p class="w-full text-gray-600 font text-xl">Make a call right now:</p>
-          <!-- contacto sussy -->
+            <a
+              class="tile"
+              href="https://wa.me/13237877575?text=Hi%20Leo's%20Tamales!%20I%20would%20like%20to%20order%20tamales."
+              target="_blank"
+              rel="noopener"
+              aria-label="Message Leo's Tamales on WhatsApp at +1 323 787 7575"
+              data-track="click_whatsapp"
+            >
+              <span class="tile__avatar tile__avatar--green" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+              </span>
+              <span class="tile__info">
+                <span class="tile__name">WhatsApp Orders</span>
+                <span class="tile__meta">+1 323 787 7575 · Fast reply</span>
+              </span>
+              <span class="tile__action" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </span>
+            </a>
 
-          <div class="flex justify-between bg-white border border-gray-300 h-fit p-3 rounded-xl w-full max-w-md row items-center gap-2 ">  
-            <div class="flex justify-center">
-              <svg class="w-14 h-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#663333">
-              <path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-            </svg>
-            <div class="flex flex-col justify-center mx-2">
-            <p class="text-xl font-bold leading-none">Sussy Reyes</p>
-            <p class="text-l">+1 323 787 7575</p>
-            </div>
-            </div>  
-            <a title="Call to Sussy" href="tel:+13237877575" aria-current="page" class=" p-1 bg-green-500 border-white shadow shadow-gray-400 border-4 rounded-2xl hover:bg-green-600 transform hover:scale-110 transition-transform duration-100 activ:border-blue-600 focus:border-blue-500 focus:scale-110">
-              <svg class="w-10 h-10 rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/>
-                <path d="M6.54 5c.06.89.21 1.76.45 2.59l-1.2 1.2c-.41-1.2-.67-2.47-.76-3.79h1.51m9.86 12.02c.85.24 1.72.39 2.6.45v1.49c-1.32-.09-2.59-.35-3.8-.75l1.2-1.19M7.5 3H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1-1-1.24 0-2.45-.2-3.57-.57-.1-.04-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1z"/>
-              </svg>
+            <a class="tile" href="tel:+13237877575" aria-label="Call Sussy Reyes at +1 323 787 7575" data-track="click_call">
+              <span class="tile__avatar" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+              </span>
+              <span class="tile__info">
+                <span class="tile__name">Sussy Reyes</span>
+                <span class="tile__meta">+1 323 787 7575</span>
+              </span>
+              <span class="tile__action" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </span>
+            </a>
+
+            <a class="tile" href="tel:+13236719175" aria-label="Call Leo Reyes at +1 323 671 9175" data-track="click_call">
+              <span class="tile__avatar" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+              </span>
+              <span class="tile__info">
+                <span class="tile__name">Leo Reyes</span>
+                <span class="tile__meta">+1 323 671 9175</span>
+              </span>
+              <span class="tile__action" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </span>
+            </a>
+
+            <a class="tile" href="mailto:leostamales@gmail.com" aria-label="Email leostamales@gmail.com">
+              <span class="tile__avatar tile__avatar--teal" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </span>
+              <span class="tile__info">
+                <span class="tile__name">Email us</span>
+                <span class="tile__meta">leostamales@gmail.com</span>
+              </span>
             </a>
           </div>
 
-                  <!-- contacto leo -->
-                  <div class="flex justify-between bg-white border border-gray-300 h-fit p-3 rounded-xl w-full max-w-md row items-center gap-2 ">  
-                    <div class="flex justify-center">
-                      <svg class="w-14 h-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#663333">
-                      <path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                    </svg>
-                    <div class="flex flex-col justify-center mx-2">
-                    <p class="text-xl font-bold leading-none">Leo Reyes</p>
-                    <p class="text-l">+1 323 671 9175</p>
-                    </div>
-                    </div>  
-                    <a title="Call to Leo" href="tel:+13236719175" aria-current="page" class=" p-1 bg-green-500 border-white shadow shadow-gray-400 border-4 rounded-2xl hover:bg-green-600 transform hover:scale-110 transition-transform duration-100 activ:border-blue-600 focus:border-blue-500 focus:scale-110">
-                      <svg class="w-10 h-10 rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff"><path d="M0 0h24v24H0V0z" fill="none"/>
-                        <path d="M6.54 5c.06.89.21 1.76.45 2.59l-1.2 1.2c-.41-1.2-.67-2.47-.76-3.79h1.51m9.86 12.02c.85.24 1.72.39 2.6.45v1.49c-1.32-.09-2.59-.35-3.8-.75l1.2-1.19M7.5 3H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1-1-1.24 0-2.45-.2-3.57-.57-.1-.04-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1z"/>
-                      </svg>
-                    </a>
-                  </div><span id="regresar"></span>
-            <!-- email leostamales -->
-            <p class="w-full text-gray-600 text-xl">Send us an email:</p>
+          <div class="order-card">
+            <h3 class="contact-subhead">Order or pre-order online</h3>
+            <form class="order-form" netlify name="FormularioIngles" action="/success.html" method="POST" data-track="submit_order">
+              <div class="form-row-2">
+                <div>
+                  <label class="field-label" for="order-name">Name</label>
+                  <input class="field" id="order-name" type="text" name="name" required autocomplete="name" placeholder="Your full name">
+                </div>
+                <div>
+                  <label class="field-label" for="order-phone">Phone</label>
+                  <input class="field" id="order-phone" type="tel" name="phone" required autocomplete="tel" placeholder="(323) 000-0000">
+                </div>
+              </div>
 
-          <div class="bg-white border border-gray-300 h-fit p-2 rounded-xl w-full max-md:w-sd flex row items-center ">  
-            
-            <svg class="w-16 h-16 px-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="48" fill="#663333"><path d="M140-160q-24 0-42-18t-18-42v-520q0-24 18-42t42-18h680q24 0 42 18t18 42v520q0 24-18 42t-42 18H140Zm340-302L140-685v465h680v-465L480-462Zm0-60 336-218H145l335 218ZM140-685v-55 520-465Z"/></svg>
-            <div>
+              <div>
+                <label class="field-label" for="order-email">Your email</label>
+                <input class="field" id="order-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+              </div>
 
-              <a title="Mail to leostamales" href="mailto:leostamales@gmail.com">
-                <p class="textCall to font-bold text-[19px] leading-none mr-3 underline">leostamales@gmail.com</p>
+              <div>
+                <label class="field-label" for="order-items">What would you like?</label>
+                <textarea class="field" id="order-items" name="mensaje" required placeholder="Example: 1 dozen pork, 1 dozen chicken, 16 oz champurrado, and your city."></textarea>
+              </div>
+
+              <div>
+                <label class="field-label" for="order-date">When do you need it?</label>
+                <input class="field" id="order-date" type="text" name="delivery_date" required placeholder="Example: This Saturday afternoon">
+              </div>
+
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAAArBk-yDbm04Gnh3"></div>
+
+              <button type="submit" class="btn btn--submit">Send my order</button>
+              <p class="form-note">We'll reply to your email.</p>
+
+              <a
+                id="wa-order-link"
+                class="btn btn--wa-outline"
+                href="https://wa.me/13237877575?text=Hi%20Leo's%20Tamales!%20I%20would%20like%20to%20place%20an%20order."
+                target="_blank"
+                rel="noopener"
+                data-track="click_whatsapp"
+              >
+                Or send via WhatsApp
               </a>
-              
-              
-            </div>
-            
-            
-            
-            
+            </form>
           </div>
         </div>
-        
-        <div data-aos="zoom-in" data-aos-delay="400" class="flex items-center gap-6 flex-col my-5 mb-16 lg:mb-0">
-          <p class="w-full text-gray-600 text-xl">Or send your message here:</p>
-          <form class="w-sm max-w-xs" data-aos="zoom-in" data-aos-delay="400" netlify name="FormularioIngles" action="success.html">
-          
-            <div class="mb-4">
-                <label for="email1" class="block text-gray-700 font-bold">Your email:</label>
-                <input id="email1" type="email" name="email" placeholder="Write your email here." class="border border-gray-300 rounded w-full py-2 px-3 bg-gray-50 placeholder:text-gray-400">
-            </div>
-            
-            <div class="mb-4">
-                <label for="mensaje1" class="block text-gray-700 font-bold">Mensaje:</label>
-                <textarea id="mensaje1" placeholder="Write your message here. We'll reply to your email."  name="mensaje" class="border border-gray-300 placeholder:text-gray-400 bg-gray-50 rounded w-full py-2 px-3"></textarea>
-            </div>
-  
-            <!-- Recaptcha de Cloudflare -->
-            <div class="mb-4">
-              <div class="cf-turnstile #example-container" data-sitekey="0x4AAAAAAArBk-yDbm04Gnh3" data-callback="javascriptCallback"></div>
-            </div>
-  
-            <input type="submit" value="Enviar" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-700">
-        </form>
-        <span id="Delivery"></span>
-        </div>
-        <!-- Formulario de Netlify -->
-        
-  </div>
-</section>
+      </div>
+    </section>
 <hr class="zigzag" id="delivery">
 
     <!-- DELIVERY -->

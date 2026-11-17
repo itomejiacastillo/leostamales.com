@@ -267,5 +267,32 @@
     if (tracked) {
       trackEvent(tracked.getAttribute("data-track"));
     }
+
+    const waBtn = e.target.closest("#wa-order-link");
+    if (waBtn) {
+      const isEs = document.documentElement.lang === "es";
+      const name = (document.getElementById("order-name") || {}).value || "";
+      const phone = (document.getElementById("order-phone") || {}).value || "";
+      const items = (document.getElementById("order-items") || {}).value || "";
+      const when = (document.getElementById("order-date") || {}).value || "";
+      if (name || items || when) {
+        const lines = isEs
+          ? [
+              "¡Hola Leo's Tamales! Quiero hacer un pedido:",
+              name ? `Nombre: ${name}` : "",
+              phone ? `Teléfono: ${phone}` : "",
+              items ? `Pedido: ${items}` : "",
+              when ? `Para cuándo: ${when}` : ""
+            ]
+          : [
+              "Hi Leo's Tamales! I'd like to place an order:",
+              name ? `Name: ${name}` : "",
+              phone ? `Phone: ${phone}` : "",
+              items ? `Order: ${items}` : "",
+              when ? `For when: ${when}` : ""
+            ];
+        waBtn.href = `https://wa.me/13237877575?text=${encodeURIComponent(lines.filter(Boolean).join("\n"))}`;
+      }
+    }
   });
 })();

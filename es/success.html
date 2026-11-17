@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta name="robots" content="noindex">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Formulario enviado correctamente.">
-    <link rel="canonical" href="/"/>
-    <meta name="robots" content="noindex" />
-    <link rel="icon" type="image/svg+xml" href="../multimedia/vectores/FAVICON.svg"/>
-    <title>Formulario Enviado - Leo's Tamales - mexican tamales</title>
-    <link rel="stylesheet" href="../output.css">
-    <script src="../mail.js"></script>
-    <script src="../aos.js"></script>
-    <link rel="stylesheet" href="../aos.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#B3202A">
+  <title>Pedido recibido | Leo's Tamales</title>
+  <meta name="description" content="Recibimos tu pedido en Leo's Tamales.">
+  <link rel="icon" type="image/svg+xml" href="/multimedia/vectores/FAVICON.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="/main.css">
+  <script src="/mail.js" defer></script>
 </head>
-<body class="scroll-smooth bg-gray-50">
-    <nav-spanish></nav-spanish>
-    <main class="p-4 h-[450px] flex flex-col justify-center max-w-md mx-auto ">
-        <h1 data-aos="fade-left" class="text-4xl font-extrabold text-orange-900">Tu mensaje fue enviado correctamente!!</h1>
-        <p data-aos="fade-left" data-aos-delay="300" class="font-bold text-xl my-6 text-orange-900">Te contactaremos via email para confirmar tus ordenes o responder a tus consultas...</p>
-        <button data-aos="zoom-in" data-aos-delay="500" onclick="history.back()"  class=" bg-green-500 w-full inline-flex items-center justify-center text-white px-5 py-3 text-xl font-medium text-center rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-gray-100">
-            Ok. Regresar a la pagina.
-        </button>
-
-    </main>
-    <footer-spanish></footer-spanish>
-    <script>
-        AOS.init();
-    </script>
+<body>
+  <nav-spanish alt-href="/success.html"></nav-spanish>
+  <main class="section">
+    <div class="container" style="max-width:560px">
+      <div class="order-card" style="text-align:center">
+        <h1 class="ribbon ribbon--green" style="font-size:28px;margin-bottom:16px">¡Pedido enviado!</h1>
+        <p style="margin:0 0 20px;color:var(--ink-soft)">Recibimos los detalles de tu pedido y te responderemos por correo muy pronto para confirmar.</p>
+        <a class="btn btn--call" href="/es/">Volver al inicio</a>
+      </div>
+    </div>
+  </main>
+  <footer-spanish></footer-spanish>
 </body>
 </html>
