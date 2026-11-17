@@ -68,6 +68,7 @@
 
   let cart = loadCart();
   let step = "cart"; // "cart" | "checkout" | "confirm" | "sent"
+  let sendChannel = "whatsapp"; // "whatsapp" | "email"
   let customerInfo = { name: "", city: "", date: "", phone: "", email: "" };
 
   function getEntries() {
@@ -216,7 +217,7 @@
                 <input class="field" id="checkout-phone" type="tel" autocomplete="tel" value="${esc(customerInfo.phone)}" placeholder="(323) 000-0000">
               </div>
               <div>
-                <label class="field-label" for="checkout-email">${es ? "Correo (para envío por correo)" : "Email (for email order)"}</label>
+                <label class="field-label" for="checkout-email">${es ? "Correo" : "Email"}</label>
                 <input class="field" id="checkout-email" type="email" autocomplete="email" value="${esc(customerInfo.email)}" placeholder="tu@correo.com">
               </div>
             </div>
@@ -225,7 +226,7 @@
               ${es ? "Enviar por WhatsApp" : "Send via WhatsApp"}
             </button>
             <button type="button" class="btn btn--wa-outline" data-checkout-review>
-              ${es ? "Enviar por correo (ver resumen)" : "Send via email (review summary)"}
+              ${es ? "Enviar por correo" : "Send via email"}
             </button>
           </form>
         </div>`;
@@ -238,6 +239,10 @@
         const u = unitLabel(e.item, e.qty, es);
         return `<li><span>${name} (${e.qty} ${u})</span><strong>${money(e.subtotal)}</strong></li>`;
       }).join("");
+      const confirmLabel = sendChannel === "whatsapp"
+        ? (es ? "Confirmar y enviar por WhatsApp" : "Confirm & send via WhatsApp")
+        : (es ? "Confirmar y enviar pedido" : "Confirm & send order");
+      const confirmClass = sendChannel === "whatsapp" ? "btn btn--call" : "btn btn--submit";
 
       drawer.innerHTML = `
         <div class="cart-drawer__backdrop" data-cart-close></div>
@@ -252,7 +257,7 @@
             <span class="cart-item__meta">${es ? "Ciudad" : "City"}: ${esc(customerInfo.city)}</span>
             <span class="cart-item__meta">${es ? "Fecha" : "Date"}: ${esc(customerInfo.date)}</span>
             ${customerInfo.phone ? `<span class="cart-item__meta">${es ? "Teléfono" : "Phone"}: ${esc(customerInfo.phone)}</span>` : ""}
-            <span class="cart-item__meta">${es ? "Correo" : "Email"}: ${esc(customerInfo.email)}</span>
+            ${customerInfo.email ? `<span class="cart-item__meta">${es ? "Correo" : "Email"}: ${esc(customerInfo.email)}</span>` : ""}
           </div>
           <ul class="price-sizes" style="border-top:0;padding-top:0">${summaryRows}</ul>
           <div class="cart-summary">
@@ -261,8 +266,8 @@
               <strong>${money(totalPrice)}</strong>
             </div>
             <p id="confirm-error" class="form-note" style="color:var(--red);font-weight:800" hidden></p>
-            <button type="button" class="btn btn--submit" data-confirm-send>
-              ${es ? "Confirmar y enviar pedido" : "Confirm & send order"}
+            <button type="button" class="${confirmClass}" data-confirm-send>
+              ${confirmLabel}
             </button>
           </div>
         </div>`;
@@ -422,8 +427,9 @@
       const es = isEs();
       const info = readCheckoutInfo(es, false);
       if (!info) return;
-      const msg = buildFullOrderMessage(getEntries(), info, es);
-      window.open("https://wa.me/13237877575?text=" + encodeURIComponent(msg), "_blank", "noopener");
+      sendChannel = "whatsapp";
+      step = "confirm";
+      render();
       return;
     }
 
@@ -431,6 +437,7 @@
       const es = isEs();
       const info = readCheckoutInfo(es, true);
       if (!info) return;
+      sendChannel = "email";
       step = "confirm";
       render();
       return;
@@ -440,6 +447,17 @@
     if (sendBtn) {
       const es = isEs();
       const entries = getEntries();
+
+      if (sendChannel === "whatsapp") {
+        const msg = buildFullOrderMessage(entries, customerInfo, es);
+        window.open("https://wa.me/13237877575?text=" + encodeURIComponent(msg), "_blank", "noopener");
+        cart = {};
+        saveCart(cart);
+        step = "sent";
+        render();
+        return;
+      }
+
       const formName = es ? "FormularioEspañol" : "FormularioIngles";
       const mensaje = (es ? "Ciudad: " : "City: ") + customerInfo.city + "\n\n" + buildItemsText(entries, es);
       const body = new URLSearchParams({
@@ -472,8 +490,8 @@
           const err = document.getElementById("confirm-error");
           if (err) {
             err.textContent = es
-              ? "No se pudo enviar automáticamente desde aquí (en Netlify en vivo sí funciona). Puedes enviarlo por WhatsApp."
-              : "Could not auto-send from this local server (works on live Netlify). You can send via WhatsApp instead.";
+              ? "No se pudo enviar automáticamente desde aquí. Puedes enviarlo por WhatsApp."
+              : "Could not send automatically right now. You can send via WhatsApp instead.";
             err.hidden = false;
           }
         });
