@@ -1272,14 +1272,84 @@ nav-spanish {
 }
 
 .product-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
   margin-top: 28px;
   padding-top: 20px;
   border-top: 2px dashed rgba(102, 51, 51, 0.25);
+}
+
+.product-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 8px 10px;
+  background: var(--card);
+  color: var(--ink);
+  text-decoration: none;
+  border: 2px solid var(--brown);
+  border-radius: 12px;
+  box-shadow: 0 2px 0 var(--brown);
+}
+
+.product-nav__link--next {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.product-nav__link:hover {
+  background: var(--cream);
+}
+
+.product-nav__thumb {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #fff;
+  padding: 3px;
+  object-fit: contain;
+  border: 1px solid rgba(102, 51, 51, 0.25);
+}
+
+.product-nav__text {
+  min-width: 0;
+}
+
+.product-nav__dir {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--red);
+}
+
+.product-nav__name {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+@media (min-width: 768px) {
+  .product-nav {
+    gap: 16px;
+  }
+  .product-nav__link {
+    gap: 12px;
+    padding: 10px 14px;
+  }
+  .product-nav__thumb {
+    width: 56px;
+    height: 56px;
+  }
+  .product-nav__name {
+    font-size: 15px;
+  }
 }
 
 /* Cart Controls on Menu & Price Cards */
