@@ -79,8 +79,14 @@ select:focus-visible {
 
 /* Container */
 .container {
-  width: min(1120px, 100% - 40px);
+  width: min(1120px, 100% - 24px);
   margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: min(1120px, 100% - 40px);
+  }
 }
 
 /* Typography helpers */
@@ -427,7 +433,7 @@ textarea.field {
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 12px;
 }
 
 .price-grid {
@@ -835,11 +841,19 @@ nav-spanish {
   background: var(--card);
   color: var(--ink);
   text-decoration: none;
-  border: 2px solid var(--brown);
-  border-radius: var(--radius-card);
-  box-shadow: 0 0 0 3px var(--cream), 0 0 0 5px var(--marigold);
+  border: 1.5px solid var(--brown);
+  border-radius: 12px;
+  box-shadow: 0 0 0 2px var(--cream), 0 0 0 3.5px var(--marigold);
   overflow: hidden;
   transition: transform 0.15s ease;
+}
+
+@media (min-width: 768px) {
+  .menu-card {
+    border: 2px solid var(--brown);
+    border-radius: var(--radius-card);
+    box-shadow: 0 0 0 3px var(--cream), 0 0 0 5px var(--marigold);
+  }
 }
 
 .menu-card:hover {
