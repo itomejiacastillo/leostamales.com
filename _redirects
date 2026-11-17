@@ -1,0 +1,14 @@
+/cheesse        /cheese/         301!
+/cheesse.html   /cheese/         301!
+/cheese/        /cheese.html     200
+/pork/          /pork.html       200
+/chicken/       /chicken.html    200
+/strawberry/    /strawberry.html 200
+/pineapple/     /pineapple.html  200
+/sweet-corn/    /sweet-corn.html 200
+/es/queso/      /es/queso.html   200
+/es/puerco/     /es/puerco.html  200
+/es/pollo/      /es/pollo.html   200
+/es/fresa/      /es/fresa.html   200
+/es/pina/       /es/pina.html    200
+/es/elote/      /es/elote.html   200

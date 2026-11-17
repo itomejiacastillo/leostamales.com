@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://leostamales.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/cheese.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/cheese.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/queso.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/cheese.html"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/es/queso.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/cheese.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/queso.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/cheese.html"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/pork.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/pork.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/puerco.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/pork.html"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/es/puerco.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/pork.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/puerco.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/pork.html"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/chicken.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/chicken.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/pollo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/chicken.html"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/es/pollo.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/chicken.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/pollo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/chicken.html"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/strawberry.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/strawberry.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/fresa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/strawberry.html"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/es/fresa.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/strawberry.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/fresa.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/strawberry.html"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/pineapple.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/pineapple.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/pina.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/pineapple.html"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/es/pina.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/pineapple.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/pina.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/pineapple.html"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/sweet-corn.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/sweet-corn.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/elote.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/sweet-corn.html"/>
+  </url>
+  <url>
+    <loc>https://leostamales.com/es/elote.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://leostamales.com/sweet-corn.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://leostamales.com/es/elote.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://leostamales.com/sweet-corn.html"/>
+  </url>
+</urlset>
