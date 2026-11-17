@@ -119,6 +119,23 @@ select:focus-visible {
   pointer-events: none;
 }
 
+.pp-desktop {
+  display: none;
+}
+
+.pp-mobile {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .pp-desktop {
+    display: block;
+  }
+  .pp-mobile {
+    display: none;
+  }
+}
+
 /* Ribbon Titles */
 .ribbon {
   display: inline-block;

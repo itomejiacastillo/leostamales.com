@@ -24,7 +24,16 @@
           <use href="#pp-flag" x="327" y="1.5" width="61" height="52" transform="rotate(-4.4 357 7)" style="color:var(--pp-blue)"/>
         </pattern>
       </defs>
-      <rect width="100%" height="64" fill="url(#pp-pattern)"/>
+      <rect class="pp-desktop" width="100%" height="64" fill="url(#pp-pattern)"/>
+      <svg class="pp-mobile" viewBox="0 0 390 64" preserveAspectRatio="none" width="100%" height="64">
+        <path d="M0,4 Q195,22 390,4" fill="none" style="stroke:var(--brown)" stroke-width="2"/>
+        <use href="#pp-flag" x="2" y="1.5" width="61" height="52" transform="rotate(4.4 32 7)" style="color:var(--pp-red)"/>
+        <use href="#pp-flag" x="67" y="5.5" width="61" height="52" transform="rotate(2.6 97 11)" style="color:var(--pp-orange)"/>
+        <use href="#pp-flag" x="132" y="7.5" width="61" height="52" transform="rotate(0.9 162 13)" style="color:var(--pp-teal)"/>
+        <use href="#pp-flag" x="197" y="7.5" width="61" height="52" transform="rotate(-0.9 227 13)" style="color:var(--pp-magenta)"/>
+        <use href="#pp-flag" x="262" y="5.5" width="61" height="52" transform="rotate(-2.6 292 11)" style="color:var(--pp-yellow)"/>
+        <use href="#pp-flag" x="327" y="1.5" width="61" height="52" transform="rotate(-4.4 357 7)" style="color:var(--pp-blue)"/>
+      </svg>
     </svg>`;
 
   function trackEvent(name, detail) {
