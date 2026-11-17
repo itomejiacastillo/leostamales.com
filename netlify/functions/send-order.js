@@ -61,12 +61,17 @@ function buildEmailHtml(opts) {
     <tr>
       <td align="center">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:580px;background-color:#FFFDF6;border:2px solid #663333;border-radius:14px;overflow:hidden">
-          <!-- Hero Green Header -->
+          <!-- Brand Header -->
           <tr>
-            <td align="center" bgcolor="#0E7A38" style="background-color:#0E7A38;padding:22px 20px;border-bottom:4px solid #F29B1D">
-              <div style="font-family:Georgia,serif;font-size:26px;font-weight:700;color:#FFFFFF;letter-spacing:0.3px">Leo's Tamales</div>
-              <div style="margin-top:4px;font-size:13px;font-weight:700;color:#FFF4DC">${isEs ? "Tamales Mexicanos y Champurrado · Condado de Los Ángeles" : "Mexican Tamales &amp; Champurrado · Los Angeles County"}</div>
+            <td align="center" bgcolor="#FFFDF6" style="background-color:#FFFDF6;padding:22px 20px 16px;border-bottom:4px solid #B3202A">
+              <a href="https://leostamales.com" target="_blank" rel="noopener" style="text-decoration:none">
+                <img src="https://leostamales.com/multimedia/logo-email.png" alt="Leo's Tamales" width="260" style="display:block;width:260px;max-width:100%;height:auto;margin:0 auto">
+              </a>
+              <div style="margin-top:8px;font-size:13px;font-weight:700;color:#5A3A31">${isEs ? "Condado de Los Ángeles · Entrega a domicilio" : "Los Angeles County · Delivery"}</div>
             </td>
+          </tr>
+          <tr>
+            <td bgcolor="#F29B1D" style="background-color:#F29B1D;height:5px;line-height:5px;font-size:0">&nbsp;</td>
           </tr>
 
           <!-- Ribbon Title & Intro -->
