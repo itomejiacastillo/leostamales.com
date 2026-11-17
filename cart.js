@@ -182,8 +182,11 @@
     }
 
     if (step === "checkout") {
+      const isPresetCity = CITIES.indexOf(customerInfo.city) !== -1;
+      const showOther = customerInfo.city && !isPresetCity;
       const cityOptions = CITIES.map(function (c) {
-        return `<option value="${c}"></option>`;
+        const sel = customerInfo.city === c ? " selected" : "";
+        return `<option value="${c}"${sel}>${c}</option>`;
       }).join("");
 
       drawer.innerHTML = `
@@ -202,13 +205,20 @@
             <div class="form-row-2">
               <div>
                 <label class="field-label" for="checkout-city">${es ? "Ciudad donde vives" : "City where you live"}</label>
-                <input class="field" id="checkout-city" type="text" list="checkout-cities" required value="${esc(customerInfo.city)}" placeholder="${es ? "Ej. Los Angeles" : "e.g. Los Angeles"}">
-                <datalist id="checkout-cities">${cityOptions}</datalist>
+                <select class="field" id="checkout-city" required>
+                  <option value="">${es ? "Selecciona tu ciudad..." : "Select your city..."}</option>
+                  ${cityOptions}
+                  <option value="__other__"${showOther ? " selected" : ""}>${es ? "Otra ciudad..." : "Other city..."}</option>
+                </select>
               </div>
               <div>
                 <label class="field-label" for="checkout-date">${es ? "Fecha que lo necesitas" : "When do you need it?"}</label>
                 <input class="field" id="checkout-date" type="text" required value="${esc(customerInfo.date)}" placeholder="${es ? "Ej. Este sábado en la tarde" : "e.g. This Saturday afternoon"}">
               </div>
+            </div>
+            <div id="checkout-city-other-wrap" ${showOther ? "" : "hidden"}>
+              <label class="field-label" for="checkout-city-other">${es ? "Escribe tu ciudad" : "Enter your city"}</label>
+              <input class="field" id="checkout-city-other" type="text" value="${showOther ? esc(customerInfo.city) : ""}" placeholder="${es ? "Nombre de tu ciudad" : "Your city name"}">
             </div>
             <div class="form-row-2">
               <div>
@@ -336,7 +346,10 @@
 
   function readCheckoutInfo(es, requireEmail) {
     const name = ((document.getElementById("checkout-name") || {}).value || "").trim();
-    const city = ((document.getElementById("checkout-city") || {}).value || "").trim();
+    let city = ((document.getElementById("checkout-city") || {}).value || "").trim();
+    if (city === "__other__") {
+      city = ((document.getElementById("checkout-city-other") || {}).value || "").trim();
+    }
     const date = ((document.getElementById("checkout-date") || {}).value || "").trim();
     const phone = ((document.getElementById("checkout-phone") || {}).value || "").trim();
     const email = ((document.getElementById("checkout-email") || {}).value || "").trim();
@@ -494,6 +507,16 @@
             err.hidden = false;
           }
         });
+    }
+  });
+
+  document.addEventListener("change", function (e) {
+    if (e.target && e.target.id === "checkout-city") {
+      const wrap = document.getElementById("checkout-city-other-wrap");
+      const otherInput = document.getElementById("checkout-city-other");
+      const isOther = e.target.value === "__other__";
+      if (wrap) wrap.hidden = !isOther;
+      if (isOther && otherInput) otherInput.focus();
     }
   });
 
