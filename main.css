@@ -838,7 +838,7 @@ textarea.field {
 .menu-card__media {
   background: #fff;
   aspect-ratio: 1 / 1;
-  padding: 12px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -852,10 +852,10 @@ textarea.field {
 }
 
 .menu-card__body {
-  padding: 14px;
+  padding: 10px 11px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   flex: 1;
 }
 
@@ -863,16 +863,16 @@ textarea.field {
   margin: 0;
   font-family: var(--font-body);
   font-weight: 800;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.25;
   color: var(--ink);
 }
 
 .menu-card__desc {
   margin: 0;
-  font-size: 15px;
+  font-size: 13.5px;
   color: var(--ink-soft);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .menu-card__foot {
@@ -881,17 +881,39 @@ textarea.field {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 4px;
   font-weight: 800;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .menu-card__price {
   color: var(--red);
+  white-space: nowrap;
 }
 
 .menu-card__cta {
   color: var(--green);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .menu-card__media {
+    padding: 12px;
+  }
+  .menu-card__body {
+    padding: 14px;
+    gap: 6px;
+  }
+  .menu-card__title {
+    font-size: 18px;
+  }
+  .menu-card__desc {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+  .menu-card__foot {
+    font-size: 15px;
+  }
 }
 
 /* Price Cards */
