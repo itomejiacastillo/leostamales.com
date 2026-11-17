@@ -605,14 +605,14 @@ textarea.field {
   color: #fff;
   min-height: calc(100dvh - 60px);
   display: flex;
-  align-items: center;
-  padding: 12px 0 20px;
+  align-items: flex-start;
+  padding: 6px 0 16px;
 }
 
 .hero__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 8px;
   align-items: center;
 }
 
@@ -622,7 +622,7 @@ textarea.field {
 }
 
 .hero__img {
-  width: clamp(140px, 24dvh, 210px);
+  width: clamp(210px, 34dvh, 270px);
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: contain;
@@ -664,6 +664,7 @@ textarea.field {
   }
   .hero {
     min-height: min(620px, calc(100dvh - 68px));
+    align-items: center;
     padding: 24px 0 40px;
   }
   .hero__grid {
