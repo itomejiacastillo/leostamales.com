@@ -1,6 +1,12 @@
-/* Leo's Tamales — Order Cart (Dozen / Unit / Champurrado) */
+/* Leo's Tamales — Order Cart & 2-Step Checkout (WhatsApp / Email) */
 (function () {
   const STORAGE_KEY = "leo_cart_v1";
+
+  const CITIES = [
+    "Los Angeles", "Carson", "Compton", "San Pedro", "Palos Verdes",
+    "Bellflower", "Lomita", "Torrance", "Long Beach", "Inglewood",
+    "Lawndale", "Paramount", "Harbor City", "Lynwood", "Wilmington"
+  ];
 
   const CATALOG = {
     "cheese-dozen": { price: 30.0, en: "Cheese Tamales", es: "Tamales de Queso", unitEn: "dozen", unitEs: "docena" },
@@ -34,9 +40,9 @@
     }
   }
 
-  function saveCart(cart) {
+  function saveCart(nextCart) {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(nextCart));
     } catch (_) {}
   }
 
@@ -55,6 +61,7 @@
   }
 
   let cart = loadCart();
+  let step = "cart"; // "cart" | "checkout"
 
   function getEntries() {
     return Object.keys(CATALOG)
@@ -66,7 +73,7 @@
       });
   }
 
-  function buildOrderText(entries, es) {
+  function buildItemsText(entries, es) {
     const total = entries.reduce(function (s, e) { return s + e.subtotal; }, 0);
     const lines = entries.map(function (e) {
       const name = es ? e.item.es : e.item.en;
@@ -77,6 +84,16 @@
       ? `Subtotal estimado: ${money(total)} (+ envío según ciudad)`
       : `Estimated subtotal: ${money(total)} (+ delivery by city)`;
     return lines.join("\n") + "\n" + totalLine;
+  }
+
+  function buildFullOrderMessage(entries, info, es) {
+    const header = es
+      ? "¡Hola Leo's Tamales! Quiero realizar este pedido:"
+      : "Hi Leo's Tamales! I'd like to place this order:";
+    const details = es
+      ? `Nombre: ${info.name}\nCiudad: ${info.city}\nFecha: ${info.date}`
+      : `Name: ${info.name}\nCity: ${info.city}\nDate needed: ${info.date}`;
+    return `${header}\n\n${details}\n\n${es ? "Productos:" : "Items:"}\n${buildItemsText(entries, es)}`;
   }
 
   function ensureDrawer() {
@@ -99,6 +116,8 @@
     const totalCount = entries.reduce(function (s, e) { return s + e.qty; }, 0);
     const totalPrice = entries.reduce(function (s, e) { return s + e.subtotal; }, 0);
 
+    if (entries.length === 0) step = "cart";
+
     document.querySelectorAll("[data-qty]").forEach(function (el) {
       const id = el.getAttribute("data-qty");
       el.textContent = String(cart[id] || 0);
@@ -120,7 +139,6 @@
     const drawer = document.getElementById("cart-drawer");
     if (!drawer) return;
 
-    const title = es ? "Tu pedido" : "Your order";
     const closeLabel = es ? "Cerrar" : "Close";
 
     if (entries.length === 0) {
@@ -128,11 +146,51 @@
         <div class="cart-drawer__backdrop" data-cart-close></div>
         <div class="cart-drawer__panel">
           <div class="cart-drawer__head">
-            <h2 id="cart-drawer-title" class="cart-drawer__title">${title}</h2>
+            <h2 id="cart-drawer-title" class="cart-drawer__title">${es ? "Tu pedido" : "Your order"}</h2>
             <button type="button" class="nav-close" aria-label="${closeLabel}" data-cart-close>×</button>
           </div>
           <p class="cart-empty">${es ? "Aún no agregas tamales o champurrado. Elige docenas o piezas en el menú." : "No items added yet. Pick dozens or single tamales from the menu."}</p>
           <a class="btn btn--call" href="#menu" data-cart-close>${es ? "Ver menú" : "Browse menu"}</a>
+        </div>`;
+      return;
+    }
+
+    if (step === "checkout") {
+      const cityOptions = CITIES.map(function (c) {
+        return `<option value="${c}"></option>`;
+      }).join("");
+      const today = new Date().toISOString().split("T")[0];
+
+      drawer.innerHTML = `
+        <div class="cart-drawer__backdrop" data-cart-close></div>
+        <div class="cart-drawer__panel">
+          <div class="cart-drawer__head">
+            <h2 id="cart-drawer-title" class="cart-drawer__title">${es ? "Datos de entrega" : "Delivery details"}</h2>
+            <button type="button" class="nav-close" aria-label="${closeLabel}" data-cart-close>×</button>
+          </div>
+          <button type="button" class="cart-clear" style="align-self:flex-start" data-cart-back>← ${es ? "Volver al pedido" : "Back to order"} (${totalCount} · ${money(totalPrice)})</button>
+          <form id="checkout-form" class="order-form" novalidate>
+            <div>
+              <label class="field-label" for="checkout-name">${es ? "Tu nombre" : "Your name"}</label>
+              <input class="field" id="checkout-name" type="text" required autocomplete="name" placeholder="${es ? "Nombre completo" : "Full name"}">
+            </div>
+            <div>
+              <label class="field-label" for="checkout-city">${es ? "Ciudad donde vives" : "City where you live"}</label>
+              <input class="field" id="checkout-city" type="text" list="checkout-cities" required placeholder="${es ? "Ej. Los Angeles, Carson, Torrance..." : "e.g. Los Angeles, Carson, Torrance..."}">
+              <datalist id="checkout-cities">${cityOptions}</datalist>
+            </div>
+            <div>
+              <label class="field-label" for="checkout-date">${es ? "Fecha que necesitas el pedido" : "Date you need the order"}</label>
+              <input class="field" id="checkout-date" type="date" min="${today}" required>
+            </div>
+            <p id="checkout-error" class="form-note" style="color:var(--red);font-weight:800" hidden></p>
+            <button type="button" class="btn btn--call" data-checkout-wa>
+              ${es ? "Enviar por WhatsApp" : "Send via WhatsApp"}
+            </button>
+            <button type="button" class="btn btn--wa-outline" data-checkout-email>
+              ${es ? "Enviar por correo" : "Send via email"}
+            </button>
+          </form>
         </div>`;
       return;
     }
@@ -154,17 +212,11 @@
         </li>`;
     }).join("");
 
-    const summaryText = buildOrderText(entries, es);
-    const waIntro = es
-      ? "¡Hola Leo's Tamales! Me gustaría hacer este pedido:\n"
-      : "Hi Leo's Tamales! I'd like to place this order:\n";
-    const waHref = "https://wa.me/13237877575?text=" + encodeURIComponent(waIntro + summaryText);
-
     drawer.innerHTML = `
       <div class="cart-drawer__backdrop" data-cart-close></div>
       <div class="cart-drawer__panel">
         <div class="cart-drawer__head">
-          <h2 id="cart-drawer-title" class="cart-drawer__title">${title}</h2>
+          <h2 id="cart-drawer-title" class="cart-drawer__title">${es ? "Tu pedido" : "Your order"}</h2>
           <button type="button" class="nav-close" aria-label="${closeLabel}" data-cart-close>×</button>
         </div>
         <button type="button" class="cart-clear" data-cart-clear>${es ? "Vaciar pedido" : "Clear order"}</button>
@@ -175,11 +227,8 @@
             <strong>${money(totalPrice)}</strong>
           </div>
           <p class="form-note">${es ? "El costo de envío puede variar según tu ciudad." : "Delivery fee may vary by city."}</p>
-          <a class="btn btn--call" href="${waHref}" target="_blank" rel="noopener" data-track="click_whatsapp">
-            ${es ? "Enviar pedido por WhatsApp" : "Send order on WhatsApp"}
-          </a>
-          <button type="button" class="btn btn--wa-outline" data-cart-to-form>
-            ${es ? "Pasar al formulario de encargo" : "Fill order form below"}
+          <button type="button" class="btn btn--call" data-cart-checkout>
+            ${es ? "Realizar pedido" : "Place order"}
           </button>
         </div>
       </div>`;
@@ -207,6 +256,25 @@
     render();
   }
 
+  function readCheckoutInfo(es) {
+    const name = ((document.getElementById("checkout-name") || {}).value || "").trim();
+    const city = ((document.getElementById("checkout-city") || {}).value || "").trim();
+    const date = ((document.getElementById("checkout-date") || {}).value || "").trim();
+    const err = document.getElementById("checkout-error");
+
+    if (!name || !city || !date) {
+      if (err) {
+        err.textContent = es
+          ? "Por favor completa tu nombre, ciudad y fecha."
+          : "Please enter your name, city, and date needed.";
+        err.hidden = false;
+      }
+      return null;
+    }
+    if (err) err.hidden = true;
+    return { name: name, city: city, date: date };
+  }
+
   document.addEventListener("click", function (e) {
     const inc = e.target.closest("[data-cart-inc]");
     if (inc) {
@@ -229,6 +297,7 @@
 
     if (e.target.closest(".float-pill--order")) {
       e.preventDefault();
+      step = "cart";
       const drawer = ensureDrawer();
       render();
       drawer.hidden = false;
@@ -241,19 +310,38 @@
       return;
     }
 
-    if (e.target.closest("[data-cart-to-form]")) {
+    if (e.target.closest("[data-cart-checkout]")) {
+      step = "checkout";
+      render();
+      const nameInput = document.getElementById("checkout-name");
+      if (nameInput) nameInput.focus();
+      return;
+    }
+
+    if (e.target.closest("[data-cart-back]")) {
+      step = "cart";
+      render();
+      return;
+    }
+
+    if (e.target.closest("[data-checkout-wa]")) {
       const es = isEs();
-      const entries = getEntries();
-      const textarea = document.getElementById("order-items");
-      if (textarea && entries.length > 0) {
-        textarea.value = buildOrderText(entries, es);
-      }
-      const drawer = document.getElementById("cart-drawer");
-      if (drawer) drawer.hidden = true;
-      const contact = document.getElementById("contact");
-      if (contact) contact.scrollIntoView({ behavior: "smooth" });
-      const nameInput = document.getElementById("order-name");
-      if (nameInput) setTimeout(function () { nameInput.focus(); }, 350);
+      const info = readCheckoutInfo(es);
+      if (!info) return;
+      const msg = buildFullOrderMessage(getEntries(), info, es);
+      window.open("https://wa.me/13237877575?text=" + encodeURIComponent(msg), "_blank", "noopener");
+      return;
+    }
+
+    if (e.target.closest("[data-checkout-email]")) {
+      const es = isEs();
+      const info = readCheckoutInfo(es);
+      if (!info) return;
+      const msg = buildFullOrderMessage(getEntries(), info, es);
+      const subject = es
+        ? `Nuevo pedido de ${info.name} (${info.city})`
+        : `New order from ${info.name} (${info.city})`;
+      window.location.href = `mailto:leostamales@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg)}`;
     }
   });
 
