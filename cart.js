@@ -526,7 +526,7 @@
         return;
       }
 
-      const mensaje = (es ? "Ciudad: " : "City: ") + customerInfo.city + "\n\n" + buildItemsText(entries, es);
+      const mensaje = buildItemsText(entries, es);
       const payload = {
         name: customerInfo.name,
         phone: customerInfo.phone || "",
