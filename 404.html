@@ -1,71 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="robots" content="noindex">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Formulario enviado correctamente.">
-    <link rel="canonical" href="/"/>
-    <meta name="robots" content="noindex" />
-    <link rel="icon" type="image/svg+xml" href="https://leostamales.com/multimedia/vectores/FAVICON.svg"/>
-    <title>Pagina no encontrada - Leo's Tamales - mexican tamales</title>
-    <link rel="stylesheet" href="/output.css">
-    <script src="https://leostamales.com/mail.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#B3202A">
+  <title>Page Not Found | Leo's Tamales</title>
+  <meta name="description" content="Page not found on Leo's Tamales. Explore our menu of Mexican tamales and champurrado.">
+  <link rel="icon" type="image/svg+xml" href="/multimedia/vectores/FAVICON.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="/main.css">
+  <script src="/mail.js" defer></script>
 </head>
-<body class="scroll-smooth bg-gray-50">
-        <span id="Inicio"></span>
-        <nav-english></nav-english>
-        <main class="p-4 h-fit flex flex-col justify-center max-w-md mx-auto ">
-           <span class="text-[10rem] leading-none m-0 font-black mx-auto text-orange-900">404</span>
-           
-            
-            <h1 id="upps" class="text-4xl font-extrabold text-orange-900">¡Oops! Page not found</h1>
-            <p id="parrafo" class="font-semibold text-xl my-6 text-orange-900">It seems that the page you are looking for does not exist. Perhaps the address is misspelled or the page has been moved.
-    
-                You can go back to the beginning and explore our menu.</p>
-            <!--<a href="/es/#regresar"  class=" bg-green-500 w-full inline-flex items-center justify-center text-white px-5 py-3 text-xl font-medium text-center rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-gray-100">
-            Ok. Regresar a la pagina.
-            </a>-->
-            <button onclick="history.back()" id="regresar" class="inicio bg-green-500 w-full inline-flex items-center justify-center text-white px-5 py-3 text-xl font-medium text-center rounded-lg hover:bg-green-600 focus:ring-4 focus:ring-gray-100">Get Back</button>
-    
-    
-        </main>
-        <footer-english></footer-english>
-<script>
-    // Detectar el idioma del navegador
-    let userLang = navigator.language || navigator.userLanguage;
-
-    // Función para cambiar el contenido según el idioma
-    function setLanguage(lang) {
-        const upps = document.getElementById("upps");
-        const parrafo = document.getElementById("parrafo")
-        const htmlElement = document.documentElement; // Seleccionar el elemento <html>
-        const regresar = document.getElementById("regresar");
-        let elementosInicio = document.querySelectorAll('.inicio');
-        let footerEnglish = document.querySelector('footer-english');
-        let navEnglish = document.querySelector('nav-english');
-        
-        if (lang.startsWith("es")) {
-            // Cambiar el contenido al español
-            htmlElement.setAttribute("lang", "es");
-            upps.textContent = "Upps! Página no encontrada.";
-            parrafo.textContent = "Parece que la página que buscas no existe. Quizás la dirección esté mal escrita o la página haya sido movida. Puedes volver al principio y explorar nuestro menú."
-            regresar.textContent = "Regresar"
-            elementosInicio.forEach(elemento => {
-            elemento.setAttribute('href', '/es');
-            });
-            // Crear un nuevo elemento <footer-spanish>
-            let footerSpanish = document.createElement('footer-spanish');
-            let navSpanish = document.createElement('nav-spanish');
-            // Reemplazar <footer-english> con <footer-spanish>
-            footerEnglish.replaceWith(footerSpanish);
-            navEnglish.replaceWith(navSpanish);
-        }
-    }
-
-    // Llamar a la función con el idioma del navegador
-    setLanguage(userLang);
-</script>
-
+<body>
+  <nav-english></nav-english>
+  <main class="section">
+    <div class="container" style="max-width:600px">
+      <div class="order-card" style="text-align:center">
+        <p class="font-display" style="margin:0 0 8px;font-size:64px;line-height:1;color:var(--red)">404</p>
+        <h1 class="font-display" style="margin:0 0 12px;font-size:28px;color:var(--ink)">Page not found</h1>
+        <p style="margin:0 0 22px;color:var(--ink-soft)">The page you are looking for may have moved. Explore our tamales and champurrado menu below.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+          <a class="btn btn--call" href="/#menu">View Menu (English)</a>
+          <a class="btn btn--hero-call" href="/es/#menu">Ver Menú (Español)</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer-english></footer-english>
 </body>
 </html>
