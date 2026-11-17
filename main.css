@@ -910,16 +910,21 @@ textarea.field {
 }
 
 .badge-value {
-  display: inline-block;
-  align-self: center;
-  padding: 4px 14px;
-  border-radius: var(--radius-pill);
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 2px 10px;
+  border-radius: 6px;
   background: var(--yellow);
   color: var(--brown);
-  border: 2px solid var(--brown);
+  border: 1.5px solid var(--brown);
+  box-shadow: 0 2px 0 var(--brown);
   font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
