@@ -1,4 +1,4 @@
-/* Leo's Tamales — Order Cart & 2-Step Checkout (WhatsApp / Email) */
+/* Leo's Tamales — Order Cart, Checkout Summary & Netlify Auto-Submit */
 (function () {
   const STORAGE_KEY = "leo_cart_v1";
 
@@ -28,6 +28,12 @@
 
   function isEs() {
     return (document.documentElement.lang || "en").slice(0, 2).toLowerCase() === "es";
+  }
+
+  function esc(str) {
+    return String(str).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c];
+    });
   }
 
   function loadCart() {
@@ -61,7 +67,8 @@
   }
 
   let cart = loadCart();
-  let step = "cart"; // "cart" | "checkout"
+  let step = "cart"; // "cart" | "checkout" | "confirm" | "sent"
+  let customerInfo = { name: "", city: "", date: "", phone: "", email: "" };
 
   function getEntries() {
     return Object.keys(CATALOG)
@@ -90,10 +97,14 @@
     const header = es
       ? "¡Hola Leo's Tamales! Quiero realizar este pedido:"
       : "Hi Leo's Tamales! I'd like to place this order:";
-    const details = es
-      ? `Nombre: ${info.name}\nCiudad: ${info.city}\nFecha: ${info.date}`
-      : `Name: ${info.name}\nCity: ${info.city}\nDate needed: ${info.date}`;
-    return `${header}\n\n${details}\n\n${es ? "Productos:" : "Items:"}\n${buildItemsText(entries, es)}`;
+    const lines = [
+      (es ? "Nombre: " : "Name: ") + info.name,
+      (es ? "Ciudad: " : "City: ") + info.city,
+      (es ? "Fecha: " : "Date needed: ") + info.date
+    ];
+    if (info.phone) lines.push((es ? "Teléfono: " : "Phone: ") + info.phone);
+    if (info.email) lines.push((es ? "Correo: " : "Email: ") + info.email);
+    return `${header}\n\n${lines.join("\n")}\n\n${es ? "Productos:" : "Items:"}\n${buildItemsText(entries, es)}`;
   }
 
   function ensureDrawer() {
@@ -116,7 +127,7 @@
     const totalCount = entries.reduce(function (s, e) { return s + e.qty; }, 0);
     const totalPrice = entries.reduce(function (s, e) { return s + e.subtotal; }, 0);
 
-    if (entries.length === 0) step = "cart";
+    if (entries.length === 0 && step !== "sent") step = "cart";
 
     document.querySelectorAll("[data-qty]").forEach(function (el) {
       const id = el.getAttribute("data-qty");
@@ -140,6 +151,20 @@
     if (!drawer) return;
 
     const closeLabel = es ? "Cerrar" : "Close";
+
+    if (step === "sent") {
+      drawer.innerHTML = `
+        <div class="cart-drawer__backdrop" data-cart-close></div>
+        <div class="cart-drawer__panel">
+          <div class="cart-drawer__head">
+            <h2 id="cart-drawer-title" class="cart-drawer__title">${es ? "¡Pedido enviado!" : "Order sent!"}</h2>
+            <button type="button" class="nav-close" aria-label="${closeLabel}" data-cart-close>×</button>
+          </div>
+          <p class="cart-empty">${es ? "Recibimos tu pedido y te responderemos muy pronto para confirmar la entrega." : "We received your order and will reply shortly to confirm delivery."}</p>
+          <button type="button" class="btn btn--call" data-cart-close>${es ? "Listo" : "Done"}</button>
+        </div>`;
+      return;
+    }
 
     if (entries.length === 0) {
       drawer.innerHTML = `
@@ -172,25 +197,74 @@
           <form id="checkout-form" class="order-form" novalidate>
             <div>
               <label class="field-label" for="checkout-name">${es ? "Tu nombre" : "Your name"}</label>
-              <input class="field" id="checkout-name" type="text" required autocomplete="name" placeholder="${es ? "Nombre completo" : "Full name"}">
+              <input class="field" id="checkout-name" type="text" required autocomplete="name" value="${esc(customerInfo.name)}" placeholder="${es ? "Nombre completo" : "Full name"}">
             </div>
-            <div>
-              <label class="field-label" for="checkout-city">${es ? "Ciudad donde vives" : "City where you live"}</label>
-              <input class="field" id="checkout-city" type="text" list="checkout-cities" required placeholder="${es ? "Ej. Los Angeles, Carson, Torrance..." : "e.g. Los Angeles, Carson, Torrance..."}">
-              <datalist id="checkout-cities">${cityOptions}</datalist>
+            <div class="form-row-2">
+              <div>
+                <label class="field-label" for="checkout-city">${es ? "Ciudad donde vives" : "City where you live"}</label>
+                <input class="field" id="checkout-city" type="text" list="checkout-cities" required value="${esc(customerInfo.city)}" placeholder="${es ? "Ej. Los Angeles" : "e.g. Los Angeles"}">
+                <datalist id="checkout-cities">${cityOptions}</datalist>
+              </div>
+              <div>
+                <label class="field-label" for="checkout-date">${es ? "Fecha que lo necesitas" : "Date needed"}</label>
+                <input class="field" id="checkout-date" type="date" min="${today}" required value="${esc(customerInfo.date)}">
+              </div>
             </div>
-            <div>
-              <label class="field-label" for="checkout-date">${es ? "Fecha que necesitas el pedido" : "Date you need the order"}</label>
-              <input class="field" id="checkout-date" type="date" min="${today}" required>
+            <div class="form-row-2">
+              <div>
+                <label class="field-label" for="checkout-phone">${es ? "Teléfono" : "Phone"}</label>
+                <input class="field" id="checkout-phone" type="tel" autocomplete="tel" value="${esc(customerInfo.phone)}" placeholder="(323) 000-0000">
+              </div>
+              <div>
+                <label class="field-label" for="checkout-email">${es ? "Correo (para envío por correo)" : "Email (for email order)"}</label>
+                <input class="field" id="checkout-email" type="email" autocomplete="email" value="${esc(customerInfo.email)}" placeholder="tu@correo.com">
+              </div>
             </div>
             <p id="checkout-error" class="form-note" style="color:var(--red);font-weight:800" hidden></p>
             <button type="button" class="btn btn--call" data-checkout-wa>
               ${es ? "Enviar por WhatsApp" : "Send via WhatsApp"}
             </button>
-            <button type="button" class="btn btn--wa-outline" data-checkout-email>
-              ${es ? "Enviar por correo" : "Send via email"}
+            <button type="button" class="btn btn--wa-outline" data-checkout-review>
+              ${es ? "Enviar por correo (ver resumen)" : "Send via email (review summary)"}
             </button>
           </form>
+        </div>`;
+      return;
+    }
+
+    if (step === "confirm") {
+      const summaryRows = entries.map(function (e) {
+        const name = es ? e.item.es : e.item.en;
+        const u = unitLabel(e.item, e.qty, es);
+        return `<li><span>${name} (${e.qty} ${u})</span><strong>${money(e.subtotal)}</strong></li>`;
+      }).join("");
+
+      drawer.innerHTML = `
+        <div class="cart-drawer__backdrop" data-cart-close></div>
+        <div class="cart-drawer__panel">
+          <div class="cart-drawer__head">
+            <h2 id="cart-drawer-title" class="cart-drawer__title">${es ? "Confirma tu pedido" : "Confirm your order"}</h2>
+            <button type="button" class="nav-close" aria-label="${closeLabel}" data-cart-close>×</button>
+          </div>
+          <button type="button" class="cart-clear" style="align-self:flex-start" data-cart-edit-info>← ${es ? "Editar datos" : "Edit details"}</button>
+          <div class="cart-item" style="flex-direction:column;align-items:flex-start;gap:4px">
+            <span class="cart-item__name">${esc(customerInfo.name)}</span>
+            <span class="cart-item__meta">${es ? "Ciudad" : "City"}: ${esc(customerInfo.city)}</span>
+            <span class="cart-item__meta">${es ? "Fecha" : "Date"}: ${esc(customerInfo.date)}</span>
+            ${customerInfo.phone ? `<span class="cart-item__meta">${es ? "Teléfono" : "Phone"}: ${esc(customerInfo.phone)}</span>` : ""}
+            <span class="cart-item__meta">${es ? "Correo" : "Email"}: ${esc(customerInfo.email)}</span>
+          </div>
+          <ul class="price-sizes" style="border-top:0;padding-top:0">${summaryRows}</ul>
+          <div class="cart-summary">
+            <div class="cart-total">
+              <span>${es ? "Subtotal estimado" : "Estimated subtotal"}</span>
+              <strong>${money(totalPrice)}</strong>
+            </div>
+            <p id="confirm-error" class="form-note" style="color:var(--red);font-weight:800" hidden></p>
+            <button type="button" class="btn btn--submit" data-confirm-send>
+              ${es ? "Confirmar y enviar pedido" : "Confirm & send order"}
+            </button>
+          </div>
         </div>`;
       return;
     }
@@ -256,11 +330,15 @@
     render();
   }
 
-  function readCheckoutInfo(es) {
+  function readCheckoutInfo(es, requireEmail) {
     const name = ((document.getElementById("checkout-name") || {}).value || "").trim();
     const city = ((document.getElementById("checkout-city") || {}).value || "").trim();
     const date = ((document.getElementById("checkout-date") || {}).value || "").trim();
+    const phone = ((document.getElementById("checkout-phone") || {}).value || "").trim();
+    const email = ((document.getElementById("checkout-email") || {}).value || "").trim();
     const err = document.getElementById("checkout-error");
+
+    customerInfo = { name: name, city: city, date: date, phone: phone, email: email };
 
     if (!name || !city || !date) {
       if (err) {
@@ -271,8 +349,17 @@
       }
       return null;
     }
+    if (requireEmail && !email) {
+      if (err) {
+        err.textContent = es
+          ? "Escribe tu correo para poder confirmar tu pedido."
+          : "Please enter your email so we can confirm your order.";
+        err.hidden = false;
+      }
+      return null;
+    }
     if (err) err.hidden = true;
-    return { name: name, city: city, date: date };
+    return customerInfo;
   }
 
   document.addEventListener("click", function (e) {
@@ -307,6 +394,7 @@
     if (e.target.closest("[data-cart-close]")) {
       const drawer = document.getElementById("cart-drawer");
       if (drawer) drawer.hidden = true;
+      if (step === "sent") step = "cart";
       return;
     }
 
@@ -324,24 +412,71 @@
       return;
     }
 
+    if (e.target.closest("[data-cart-edit-info]")) {
+      step = "checkout";
+      render();
+      return;
+    }
+
     if (e.target.closest("[data-checkout-wa]")) {
       const es = isEs();
-      const info = readCheckoutInfo(es);
+      const info = readCheckoutInfo(es, false);
       if (!info) return;
       const msg = buildFullOrderMessage(getEntries(), info, es);
       window.open("https://wa.me/13237877575?text=" + encodeURIComponent(msg), "_blank", "noopener");
       return;
     }
 
-    if (e.target.closest("[data-checkout-email]")) {
+    if (e.target.closest("[data-checkout-review]")) {
       const es = isEs();
-      const info = readCheckoutInfo(es);
+      const info = readCheckoutInfo(es, true);
       if (!info) return;
-      const msg = buildFullOrderMessage(getEntries(), info, es);
-      const subject = es
-        ? `Nuevo pedido de ${info.name} (${info.city})`
-        : `New order from ${info.name} (${info.city})`;
-      window.location.href = `mailto:leostamales@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(msg)}`;
+      step = "confirm";
+      render();
+      return;
+    }
+
+    const sendBtn = e.target.closest("[data-confirm-send]");
+    if (sendBtn) {
+      const es = isEs();
+      const entries = getEntries();
+      const formName = es ? "FormularioEspañol" : "FormularioIngles";
+      const mensaje = (es ? "Ciudad: " : "City: ") + customerInfo.city + "\n\n" + buildItemsText(entries, es);
+      const body = new URLSearchParams({
+        "form-name": formName,
+        name: customerInfo.name,
+        phone: customerInfo.phone || "-",
+        email: customerInfo.email,
+        mensaje: mensaje,
+        delivery_date: customerInfo.date
+      }).toString();
+
+      sendBtn.disabled = true;
+      sendBtn.textContent = es ? "Enviando..." : "Sending...";
+
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          cart = {};
+          saveCart(cart);
+          step = "sent";
+          render();
+        })
+        .catch(function () {
+          sendBtn.disabled = false;
+          sendBtn.textContent = es ? "Confirmar y enviar pedido" : "Confirm & send order";
+          const err = document.getElementById("confirm-error");
+          if (err) {
+            err.textContent = es
+              ? "No se pudo enviar automáticamente desde aquí (en Netlify en vivo sí funciona). Puedes enviarlo por WhatsApp."
+              : "Could not auto-send from this local server (works on live Netlify). You can send via WhatsApp instead.";
+            err.hidden = false;
+          }
+        });
     }
   });
 
