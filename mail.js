@@ -196,7 +196,7 @@
     connectedCallback() {
       this.innerHTML = renderFooter({
         homeHref: "/",
-        tagline: "Delivery-only Mexican tamales & champurrado across Los Angeles County. Pre-orders welcome.",
+        tagline: "Mexican tamales & champurrado delivered across Los Angeles County. Pre-orders welcome.",
         contactHeading: "Contact",
         paymentsHeading: "Payments",
         infoHeading: "Explore",
@@ -215,7 +215,7 @@
     connectedCallback() {
       this.innerHTML = renderFooter({
         homeHref: "/es/",
-        tagline: "Tamales mexicanos y champurrado solo a domicilio en el condado de Los Ángeles. Aceptamos encargos.",
+        tagline: "Tamales mexicanos y champurrado a domicilio en el condado de Los Ángeles. Aceptamos encargos.",
         contactHeading: "Contacto",
         paymentsHeading: "Medios de pago",
         infoHeading: "Explora",
