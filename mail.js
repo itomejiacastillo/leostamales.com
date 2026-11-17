@@ -4,7 +4,7 @@
   const YEAR = new Date().getFullYear();
 
   const PAPEL_PICADO_SVG = `
-    <svg class="papel-picado" width="100%" height="64" aria-hidden="true" focusable="false">
+    <svg class="papel-picado" viewBox="0 0 2340 64" preserveAspectRatio="xMidYMin slice" width="100%" height="64" aria-hidden="true" focusable="false">
       <defs>
         <symbol id="pp-flag" viewBox="0 0 61 52">
           <polygon points="0,6 61,6 61,42 51,50 41,42 31,50 20,42 10,50 0,42" fill="currentColor"/>
@@ -14,17 +14,22 @@
             <circle cx="47" cy="32" r="2.5"/>
           </g>
         </symbol>
-        <pattern id="pp-pattern" x="50%" width="390" height="64" patternUnits="userSpaceOnUse">
-          <path d="M0,4 Q195,22 390,4" fill="none" style="stroke:var(--brown)" stroke-width="2"/>
+        <g id="pp-swag">
+          <path d="M0,4 Q195,22 390,4" fill="none" style="stroke:var(--brown)" stroke-width="2" shape-rendering="geometricPrecision"/>
           <use href="#pp-flag" x="2" y="1.5" width="61" height="52" transform="rotate(4.4 32 7)" style="color:var(--pp-red)"/>
           <use href="#pp-flag" x="67" y="5.5" width="61" height="52" transform="rotate(2.6 97 11)" style="color:var(--pp-orange)"/>
           <use href="#pp-flag" x="132" y="7.5" width="61" height="52" transform="rotate(0.9 162 13)" style="color:var(--pp-teal)"/>
           <use href="#pp-flag" x="197" y="7.5" width="61" height="52" transform="rotate(-0.9 227 13)" style="color:var(--pp-magenta)"/>
           <use href="#pp-flag" x="262" y="5.5" width="61" height="52" transform="rotate(-2.6 292 11)" style="color:var(--pp-yellow)"/>
           <use href="#pp-flag" x="327" y="1.5" width="61" height="52" transform="rotate(-4.4 357 7)" style="color:var(--pp-blue)"/>
-        </pattern>
+        </g>
       </defs>
-      <rect width="100%" height="64" fill="url(#pp-pattern)"/>
+      <use href="#pp-swag" x="0"/>
+      <use href="#pp-swag" x="390"/>
+      <use href="#pp-swag" x="780"/>
+      <use href="#pp-swag" x="1170"/>
+      <use href="#pp-swag" x="1560"/>
+      <use href="#pp-swag" x="1950"/>
     </svg>`;
 
   function trackEvent(name, detail) {
