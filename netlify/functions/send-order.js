@@ -91,7 +91,7 @@ exports.handler = async function (event) {
     return { statusCode: 500, body: JSON.stringify({ error: "Missing RESEND_API_KEY" }) };
   }
 
-  const fromEmail = process.env.RESEND_FROM || "Leo's Tamales <pedidos@leostamales.com>";
+  const fromEmail = process.env.RESEND_FROM || "Leo's Tamales <orders@mail.leostamales.com>";
   const ownerEmail = process.env.OWNER_EMAIL || "leostamales@gmail.com";
 
   const detailsHtml = `
