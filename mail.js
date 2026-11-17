@@ -4,27 +4,27 @@
   const YEAR = new Date().getFullYear();
 
   const PAPEL_PICADO_SVG = `
-    <svg class="papel-picado" width="100%" height="52" aria-hidden="true" focusable="false">
+    <svg class="papel-picado" width="100%" height="64" aria-hidden="true" focusable="false">
       <defs>
         <symbol id="pp-flag" viewBox="0 0 61 52">
           <polygon points="0,6 61,6 61,42 51,50 41,42 31,50 20,42 10,50 0,42" fill="currentColor"/>
-          <g style="fill:var(--cream)">
+          <g style="fill:var(--card)">
             <circle cx="30" cy="22" r="5"/>
             <circle cx="14" cy="32" r="2.5"/>
             <circle cx="47" cy="32" r="2.5"/>
           </g>
         </symbol>
-        <pattern id="pp-pattern" width="390" height="52" patternUnits="userSpaceOnUse">
-          <line x1="0" y1="6" x2="390" y2="6" style="stroke:var(--brown)" stroke-width="2"/>
-          <use href="#pp-flag" x="2" width="61" height="52" style="color:var(--pp-red)"/>
-          <use href="#pp-flag" x="67" width="61" height="52" style="color:var(--pp-orange)"/>
-          <use href="#pp-flag" x="132" width="61" height="52" style="color:var(--pp-teal)"/>
-          <use href="#pp-flag" x="197" width="61" height="52" style="color:var(--pp-magenta)"/>
-          <use href="#pp-flag" x="262" width="61" height="52" style="color:var(--pp-yellow)"/>
-          <use href="#pp-flag" x="327" width="61" height="52" style="color:var(--pp-blue)"/>
+        <pattern id="pp-pattern" width="390" height="64" patternUnits="userSpaceOnUse">
+          <path d="M0,4 Q195,22 390,4" fill="none" style="stroke:var(--brown)" stroke-width="2"/>
+          <use href="#pp-flag" x="2" y="1.5" width="61" height="52" transform="rotate(4.4 32 7)" style="color:var(--pp-red)"/>
+          <use href="#pp-flag" x="67" y="5.5" width="61" height="52" transform="rotate(2.6 97 11)" style="color:var(--pp-orange)"/>
+          <use href="#pp-flag" x="132" y="7.5" width="61" height="52" transform="rotate(0.9 162 13)" style="color:var(--pp-teal)"/>
+          <use href="#pp-flag" x="197" y="7.5" width="61" height="52" transform="rotate(-0.9 227 13)" style="color:var(--pp-magenta)"/>
+          <use href="#pp-flag" x="262" y="5.5" width="61" height="52" transform="rotate(-2.6 292 11)" style="color:var(--pp-yellow)"/>
+          <use href="#pp-flag" x="327" y="1.5" width="61" height="52" transform="rotate(-4.4 357 7)" style="color:var(--pp-blue)"/>
         </pattern>
       </defs>
-      <rect width="100%" height="52" fill="url(#pp-pattern)"/>
+      <rect width="100%" height="64" fill="url(#pp-pattern)"/>
     </svg>`;
 
   function trackEvent(name, detail) {
