@@ -185,7 +185,6 @@
       const cityOptions = CITIES.map(function (c) {
         return `<option value="${c}"></option>`;
       }).join("");
-      const today = new Date().toISOString().split("T")[0];
 
       drawer.innerHTML = `
         <div class="cart-drawer__backdrop" data-cart-close></div>
@@ -207,8 +206,8 @@
                 <datalist id="checkout-cities">${cityOptions}</datalist>
               </div>
               <div>
-                <label class="field-label" for="checkout-date">${es ? "Fecha que lo necesitas" : "Date needed"}</label>
-                <input class="field" id="checkout-date" type="date" min="${today}" required value="${esc(customerInfo.date)}">
+                <label class="field-label" for="checkout-date">${es ? "Fecha que lo necesitas" : "When do you need it?"}</label>
+                <input class="field" id="checkout-date" type="text" required value="${esc(customerInfo.date)}" placeholder="${es ? "Ej. Este sábado en la tarde" : "e.g. This Saturday afternoon"}">
               </div>
             </div>
             <div class="form-row-2">
