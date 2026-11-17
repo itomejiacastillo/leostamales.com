@@ -65,6 +65,7 @@
   <link rel="stylesheet" href="/main.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="/main.css"></noscript>
   <script src="/mail.js" defer></script>
+  <script src="/cart.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -157,89 +158,185 @@
         <p class="section-lead">Mexican tamales in red or green salsa, plus sweet flavors. Tap any flavor to see details and order.</p>
 
         <div class="menu-grid">
-          <a class="menu-card" href="/cheese.html">
-            <div class="menu-card__media">
-              <img src="/multimedia/queso.webp" alt="Mexican cheese tamales with jalapeño and Monterey Jack in green sauce" width="350" height="350" loading="lazy">
-            </div>
-            <div class="menu-card__body">
-              <h3 class="menu-card__title">Cheese Tamales</h3>
-              <p class="menu-card__desc">Jalapeño &amp; cheese, green salsa</p>
-              <div class="menu-card__foot">
-                <span class="menu-card__price">$2.75+</span>
-                <span class="menu-card__cta">Order →</span>
+          <article class="menu-card">
+            <a class="menu-card__link" href="/cheese.html">
+              <div class="menu-card__media">
+                <img src="/multimedia/queso.webp" alt="Mexican cheese tamales with jalapeño and Monterey Jack in green sauce" width="350" height="350" loading="lazy">
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Cheese Tamales</h3>
+                <p class="menu-card__desc">Jalapeño &amp; cheese, green salsa</p>
+              </div>
+            </a>
+            <div class="menu-card__controls">
+              <div class="qty-row">
+                <span class="qty-row__label">Dozen <span class="qty-row__price">$30</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="cheese-dozen" aria-label="Remove 1 dozen Cheese Tamales">−</button>
+                  <span class="qty-val" data-qty="cheese-dozen">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="cheese-dozen" aria-label="Add 1 dozen Cheese Tamales">+</button>
+                </div>
+              </div>
+              <div class="qty-row">
+                <span class="qty-row__label">Each <span class="qty-row__price">$2.75</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="cheese-each" aria-label="Remove 1 Cheese Tamal">−</button>
+                  <span class="qty-val" data-qty="cheese-each">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="cheese-each" aria-label="Add 1 Cheese Tamal">+</button>
+                </div>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="menu-card" href="/pork.html">
-            <div class="menu-card__media">
-              <img src="/multimedia/puerco.webp" alt="Mexican pork tamales in traditional red sauce" width="350" height="350" loading="lazy">
-            </div>
-            <div class="menu-card__body">
-              <h3 class="menu-card__title">Pork Tamales</h3>
-              <p class="menu-card__desc">Pork in traditional red sauce</p>
-              <div class="menu-card__foot">
-                <span class="menu-card__price">$2.75+</span>
-                <span class="menu-card__cta">Order →</span>
+          <article class="menu-card">
+            <a class="menu-card__link" href="/pork.html">
+              <div class="menu-card__media">
+                <img src="/multimedia/puerco.webp" alt="Mexican pork tamales in traditional red sauce" width="350" height="350" loading="lazy">
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Pork Tamales</h3>
+                <p class="menu-card__desc">Pork in traditional red sauce</p>
+              </div>
+            </a>
+            <div class="menu-card__controls">
+              <div class="qty-row">
+                <span class="qty-row__label">Dozen <span class="qty-row__price">$30</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="pork-dozen" aria-label="Remove 1 dozen Pork Tamales">−</button>
+                  <span class="qty-val" data-qty="pork-dozen">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="pork-dozen" aria-label="Add 1 dozen Pork Tamales">+</button>
+                </div>
+              </div>
+              <div class="qty-row">
+                <span class="qty-row__label">Each <span class="qty-row__price">$2.75</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="pork-each" aria-label="Remove 1 Pork Tamal">−</button>
+                  <span class="qty-val" data-qty="pork-each">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="pork-each" aria-label="Add 1 Pork Tamal">+</button>
+                </div>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="menu-card" href="/chicken.html">
-            <div class="menu-card__media">
-              <img src="/multimedia/pollo.webp" alt="Mexican chicken tamales in green sauce" width="350" height="350" loading="lazy">
-            </div>
-            <div class="menu-card__body">
-              <h3 class="menu-card__title">Chicken Tamales</h3>
-              <p class="menu-card__desc">Chicken in green salsa</p>
-              <div class="menu-card__foot">
-                <span class="menu-card__price">$2.75+</span>
-                <span class="menu-card__cta">Order →</span>
+          <article class="menu-card">
+            <a class="menu-card__link" href="/chicken.html">
+              <div class="menu-card__media">
+                <img src="/multimedia/pollo.webp" alt="Mexican chicken tamales in green sauce" width="350" height="350" loading="lazy">
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Chicken Tamales</h3>
+                <p class="menu-card__desc">Chicken in green salsa</p>
+              </div>
+            </a>
+            <div class="menu-card__controls">
+              <div class="qty-row">
+                <span class="qty-row__label">Dozen <span class="qty-row__price">$30</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="chicken-dozen" aria-label="Remove 1 dozen Chicken Tamales">−</button>
+                  <span class="qty-val" data-qty="chicken-dozen">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="chicken-dozen" aria-label="Add 1 dozen Chicken Tamales">+</button>
+                </div>
+              </div>
+              <div class="qty-row">
+                <span class="qty-row__label">Each <span class="qty-row__price">$2.75</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="chicken-each" aria-label="Remove 1 Chicken Tamal">−</button>
+                  <span class="qty-val" data-qty="chicken-each">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="chicken-each" aria-label="Add 1 Chicken Tamal">+</button>
+                </div>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="menu-card" href="/strawberry.html">
-            <div class="menu-card__media">
-              <img src="/multimedia/fresa.webp" alt="Sweet Mexican strawberry tamales" width="350" height="350" loading="lazy">
-            </div>
-            <div class="menu-card__body">
-              <h3 class="menu-card__title">Strawberry Tamales</h3>
-              <p class="menu-card__desc">Sweet strawberry masa</p>
-              <div class="menu-card__foot">
-                <span class="menu-card__price">$2.75+</span>
-                <span class="menu-card__cta">Order →</span>
+          <article class="menu-card">
+            <a class="menu-card__link" href="/strawberry.html">
+              <div class="menu-card__media">
+                <img src="/multimedia/fresa.webp" alt="Sweet Mexican strawberry tamales" width="350" height="350" loading="lazy">
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Strawberry Tamales</h3>
+                <p class="menu-card__desc">Sweet strawberry masa</p>
+              </div>
+            </a>
+            <div class="menu-card__controls">
+              <div class="qty-row">
+                <span class="qty-row__label">Dozen <span class="qty-row__price">$30</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="strawberry-dozen" aria-label="Remove 1 dozen Strawberry Tamales">−</button>
+                  <span class="qty-val" data-qty="strawberry-dozen">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="strawberry-dozen" aria-label="Add 1 dozen Strawberry Tamales">+</button>
+                </div>
+              </div>
+              <div class="qty-row">
+                <span class="qty-row__label">Each <span class="qty-row__price">$2.75</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="strawberry-each" aria-label="Remove 1 Strawberry Tamal">−</button>
+                  <span class="qty-val" data-qty="strawberry-each">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="strawberry-each" aria-label="Add 1 Strawberry Tamal">+</button>
+                </div>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="menu-card" href="/pineapple.html">
-            <div class="menu-card__media">
-              <img src="/multimedia/pi%C3%B1a.webp" alt="Sweet Mexican pineapple tamales" width="350" height="350" loading="lazy">
-            </div>
-            <div class="menu-card__body">
-              <h3 class="menu-card__title">Pineapple Tamales</h3>
-              <p class="menu-card__desc">Sweet pineapple masa</p>
-              <div class="menu-card__foot">
-                <span class="menu-card__price">$2.75+</span>
-                <span class="menu-card__cta">Order →</span>
+          <article class="menu-card">
+            <a class="menu-card__link" href="/pineapple.html">
+              <div class="menu-card__media">
+                <img src="/multimedia/pi%C3%B1a.webp" alt="Sweet Mexican pineapple tamales" width="350" height="350" loading="lazy">
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Pineapple Tamales</h3>
+                <p class="menu-card__desc">Sweet pineapple masa</p>
+              </div>
+            </a>
+            <div class="menu-card__controls">
+              <div class="qty-row">
+                <span class="qty-row__label">Dozen <span class="qty-row__price">$30</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="pineapple-dozen" aria-label="Remove 1 dozen Pineapple Tamales">−</button>
+                  <span class="qty-val" data-qty="pineapple-dozen">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="pineapple-dozen" aria-label="Add 1 dozen Pineapple Tamales">+</button>
+                </div>
+              </div>
+              <div class="qty-row">
+                <span class="qty-row__label">Each <span class="qty-row__price">$2.75</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="pineapple-each" aria-label="Remove 1 Pineapple Tamal">−</button>
+                  <span class="qty-val" data-qty="pineapple-each">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="pineapple-each" aria-label="Add 1 Pineapple Tamal">+</button>
+                </div>
               </div>
             </div>
-          </a>
+          </article>
 
-          <a class="menu-card" href="/sweet-corn.html">
-            <div class="menu-card__media">
-              <img src="/multimedia/elote.webp" alt="Sweet Mexican corn tamales" width="350" height="350" loading="lazy">
-            </div>
-            <div class="menu-card__body">
-              <h3 class="menu-card__title">Sweet Corn Tamales</h3>
-              <p class="menu-card__desc">Sweet corn masa</p>
-              <div class="menu-card__foot">
-                <span class="menu-card__price">$2.75+</span>
-                <span class="menu-card__cta">Order →</span>
+          <article class="menu-card">
+            <a class="menu-card__link" href="/sweet-corn.html">
+              <div class="menu-card__media">
+                <img src="/multimedia/elote.webp" alt="Sweet Mexican corn tamales" width="350" height="350" loading="lazy">
+              </div>
+              <div class="menu-card__body">
+                <h3 class="menu-card__title">Sweet Corn Tamales</h3>
+                <p class="menu-card__desc">Sweet corn masa</p>
+              </div>
+            </a>
+            <div class="menu-card__controls">
+              <div class="qty-row">
+                <span class="qty-row__label">Dozen <span class="qty-row__price">$30</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="sweet-corn-dozen" aria-label="Remove 1 dozen Sweet Corn Tamales">−</button>
+                  <span class="qty-val" data-qty="sweet-corn-dozen">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="sweet-corn-dozen" aria-label="Add 1 dozen Sweet Corn Tamales">+</button>
+                </div>
+              </div>
+              <div class="qty-row">
+                <span class="qty-row__label">Each <span class="qty-row__price">$2.75</span></span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="sweet-corn-each" aria-label="Remove 1 Sweet Corn Tamal">−</button>
+                  <span class="qty-val" data-qty="sweet-corn-each">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="sweet-corn-each" aria-label="Add 1 Sweet Corn Tamal">+</button>
+                </div>
               </div>
             </div>
-          </a>
+          </article>
         </div>
       </div>
     </section>
@@ -294,9 +391,30 @@
               <span class="price-card__unit">from 12 oz</span>
             </div>
             <ul class="price-sizes" aria-label="Champurrado sizes">
-              <li><span>12 oz cup</span><span>$2.50</span></li>
-              <li><span>16 oz cup</span><span>$2.75</span></li>
-              <li><span>1 Gallon</span><span>$20</span></li>
+              <li>
+                <span>12 oz cup · $2.50</span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="champurrado-12oz" aria-label="Remove 12 oz Champurrado">−</button>
+                  <span class="qty-val" data-qty="champurrado-12oz">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="champurrado-12oz" aria-label="Add 12 oz Champurrado">+</button>
+                </div>
+              </li>
+              <li>
+                <span>16 oz cup · $2.75</span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="champurrado-16oz" aria-label="Remove 16 oz Champurrado">−</button>
+                  <span class="qty-val" data-qty="champurrado-16oz">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="champurrado-16oz" aria-label="Add 16 oz Champurrado">+</button>
+                </div>
+              </li>
+              <li>
+                <span>1 Gallon · $20</span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" data-cart-dec="champurrado-gallon" aria-label="Remove 1 Gallon Champurrado">−</button>
+                  <span class="qty-val" data-qty="champurrado-gallon">0</span>
+                  <button type="button" class="qty-btn qty-btn--plus" data-cart-inc="champurrado-gallon" aria-label="Add 1 Gallon Champurrado">+</button>
+                </div>
+              </li>
             </ul>
             <a class="btn btn--call" href="#contact" data-track="click_price_champurrado">Order now</a>
           </article>
