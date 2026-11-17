@@ -176,7 +176,7 @@
             <button type="button" class="nav-close" aria-label="${closeLabel}" data-cart-close>×</button>
           </div>
           <p class="cart-empty">${es ? "Aún no agregas tamales o champurrado. Elige docenas o piezas en el menú." : "No items added yet. Pick dozens or single tamales from the menu."}</p>
-          <a class="btn btn--call" href="#menu" data-cart-close>${es ? "Ver menú" : "Browse menu"}</a>
+          <a class="btn btn--call" href="${es ? "/es/#menu" : "/#menu"}" data-cart-close>${es ? "Ver menú" : "Browse menu"}</a>
         </div>`;
       return;
     }
