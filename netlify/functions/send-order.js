@@ -58,7 +58,7 @@ exports.handler = async function (event) {
   }
 
   // 3. Server-side Cloudflare Turnstile verification (blocks bots before Resend)
-  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY || process.env.TURNSTILE_API_KEY;
   if (!turnstileSecret) {
     return { statusCode: 500, body: JSON.stringify({ error: "Missing TURNSTILE_SECRET_KEY" }) };
   }
