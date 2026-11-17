@@ -476,6 +476,12 @@ textarea.field {
 }
 
 /* Header & Navigation */
+nav-english,
+nav-spanish {
+  display: block;
+  min-height: 62px;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -707,6 +713,10 @@ textarea.field {
 }
 
 @media (min-width: 768px) {
+  nav-english,
+  nav-spanish {
+    min-height: 70px;
+  }
   .site-header__inner {
     min-height: 68px;
   }
