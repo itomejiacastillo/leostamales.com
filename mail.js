@@ -14,7 +14,7 @@
             <circle cx="47" cy="32" r="2.5"/>
           </g>
         </symbol>
-        <pattern id="pp-pattern" width="390" height="64" patternUnits="userSpaceOnUse">
+        <pattern id="pp-pattern" x="50%" width="390" height="64" patternUnits="userSpaceOnUse">
           <path d="M0,4 Q195,22 390,4" fill="none" style="stroke:var(--brown)" stroke-width="2"/>
           <use href="#pp-flag" x="2" y="1.5" width="61" height="52" transform="rotate(4.4 32 7)" style="color:var(--pp-red)"/>
           <use href="#pp-flag" x="67" y="5.5" width="61" height="52" transform="rotate(2.6 97 11)" style="color:var(--pp-orange)"/>
