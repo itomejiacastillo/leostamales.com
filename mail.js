@@ -62,7 +62,7 @@
                 : `<span class="lang-switch__active" aria-current="page">EN</span><a href="${altHref}" hreflang="es" lang="es" data-lang-switch="es">ES</a>`
               }
             </div>
-            <a class="btn btn--call site-header__cta" href="${cfg.homeHref}#contact" data-track="click_order_header">
+            <a class="btn btn--call site-header__cta" href="${cfg.homeHref}#menu" data-track="click_order_header">
               ${cfg.ctaText}
             </a>
             <button type="button" class="nav-burger" aria-label="${cfg.openMenuLabel}" aria-expanded="false" aria-controls="mobile-drawer">

@@ -449,6 +449,17 @@
       return;
     }
 
+    if (e.target.closest("[data-price-champurrado-cta]")) {
+      if (getEntries().length > 0) {
+        e.preventDefault();
+        step = "cart";
+        const drawer = ensureDrawer();
+        render();
+        drawer.hidden = false;
+      }
+      return;
+    }
+
     if (e.target.closest("[data-cart-close]")) {
       const drawer = document.getElementById("cart-drawer");
       if (drawer) drawer.hidden = true;
