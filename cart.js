@@ -101,7 +101,9 @@
       if (!document.getElementById("cart-turnstile")) return;
       el.innerHTML = "";
       cartTurnstileWidgetId = window.turnstile.render(el, {
-        sitekey: "0x4AAAAAAArBk-yDbm04Gnh3"
+        sitekey: "0x4AAAAAAArBk-yDbm04Gnh3",
+        appearance: "interaction-only",
+        theme: "light"
       });
     });
   }
@@ -312,7 +314,7 @@
               <span>${es ? "Subtotal estimado" : "Estimated subtotal"}</span>
               <strong>${money(totalPrice)}</strong>
             </div>
-            ${sendChannel === "email" ? '<div id="cart-turnstile" style="min-height:65px"></div>' : ""}
+            ${sendChannel === "email" ? '<div id="cart-turnstile"></div>' : ""}
             <p id="confirm-error" class="form-note" style="color:var(--red);font-weight:800" hidden></p>
             <button type="button" class="${confirmClass}" data-confirm-send>
               ${confirmLabel}
