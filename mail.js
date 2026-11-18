@@ -340,8 +340,8 @@
     banner.setAttribute("role", "region");
     banner.setAttribute("aria-label", shouldSuggestEs ? "Sugerencia de idioma" : "Language suggestion");
     banner.innerHTML = shouldSuggestEs
-      ? `<span>¿Ver en español?</span> <a class="lang-suggest__link" href="${targetHref}" hreflang="es" lang="es" data-lang-switch="es">Cambiar</a> <button type="button" class="lang-suggest__close" aria-label="Cerrar" data-lang-dismiss>×</button>`
-      : `<span>Prefer English?</span> <a class="lang-suggest__link" href="${targetHref}" hreflang="en" lang="en" data-lang-switch="en">Switch</a> <button type="button" class="lang-suggest__close" aria-label="Dismiss" data-lang-dismiss>×</button>`;
+      ? `<span>¿Prefieres ver la página en español?</span><div class="lang-suggest__actions"><a class="lang-suggest__link" href="${targetHref}" hreflang="es" lang="es" data-lang-switch="es">Ver en Español</a><button type="button" class="lang-suggest__close" aria-label="Cerrar" data-lang-dismiss>×</button></div>`
+      : `<span>Prefer this page in English?</span><div class="lang-suggest__actions"><a class="lang-suggest__link" href="${targetHref}" hreflang="en" lang="en" data-lang-switch="en">Switch to English</a><button type="button" class="lang-suggest__close" aria-label="Dismiss" data-lang-dismiss>×</button></div>`;
 
     document.body.appendChild(banner);
   });

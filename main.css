@@ -384,49 +384,73 @@ textarea.field {
 
 .lang-suggest {
   position: fixed;
-  bottom: calc(16px + env(safe-area-inset-bottom));
-  left: 16px;
-  z-index: 50;
-  display: inline-flex;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 55;
+  width: min(520px, calc(100vw - 24px));
+  display: flex;
   align-items: center;
-  gap: 8px;
-  max-width: calc(100vw - 180px);
-  min-height: var(--tap);
-  padding: 6px 10px 6px 14px;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
   background: var(--card);
   color: var(--ink);
   border: 2px solid var(--brown);
-  border-radius: var(--radius-pill);
-  box-shadow: 0 4px 12px rgba(58, 31, 24, 0.3);
+  border-radius: var(--radius-card);
+  box-shadow: 0 0 0 3px var(--marigold), 0 10px 24px rgba(58, 31, 24, 0.35);
   font-family: var(--font-body);
   font-weight: 800;
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.lang-suggest__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .lang-suggest__link {
-  color: var(--red);
-  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 6px 14px;
+  border-radius: 10px;
+  background: var(--red);
+  color: var(--cream);
+  border: 1.5px solid var(--brown);
+  box-shadow: 0 2px 0 var(--brown);
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
   white-space: nowrap;
+}
+
+.lang-suggest__link:hover {
+  filter: brightness(0.95);
 }
 
 .lang-suggest__close {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--ink-soft);
-  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--brown);
+  border-radius: 10px;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 800;
   line-height: 1;
   cursor: pointer;
 }
 
 .lang-suggest__close:hover {
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--marigold);
 }
 
 /* Responsive Grids */
