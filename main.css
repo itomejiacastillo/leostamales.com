@@ -377,7 +377,7 @@ textarea.field {
 
 .float-pill--order {
   right: 16px;
-  background: var(--green);
+  background: var(--red);
   color: #fff;
   border: 2px solid #fff;
 }
